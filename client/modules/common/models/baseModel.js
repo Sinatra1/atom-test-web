@@ -19,6 +19,10 @@ atomTestApp.factory('BaseModel', [function () {
             }
         };
         
+        BaseModel.prototype.id = null;
+        BaseModel.prototype.created = null;
+        BaseModel.prototype.updated = null;
+        
         return BaseModel;
     }])
 

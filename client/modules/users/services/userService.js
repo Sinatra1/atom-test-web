@@ -1,11 +1,11 @@
 'use strict';
-atomTestApp.service("loginService", [
-    'authService', '$api', '$q',
-    function (authService, $api, $q) {
+atomTestApp.service("userService", [
+    'authService', '$api', 'emailService', 'User',
+    function (authService, $api, emailService, User) {
         var service = {};
 
-        service.urlHash = 'auths';
-        service.title = 'Sign in';
+        service.urlHash = 'users';
+        service.title = 'User';
 
         service.anUpperCase = /[A-Z]/;
         service.aLowerCase = /[a-z]/;
@@ -13,42 +13,33 @@ atomTestApp.service("loginService", [
         service.aSpecial = /[!|@|#|$|%|^|&|*|(|)|-|_]/;
         service.minLength = 8;
 
-        service.loginUser = function (user) {
-            var deferred = $q.defer();
-
-            $api.post(service.urlHash, user).then(
+        service.create = function (data) {
+            var user = new User(data);
+            
+            if (!service.isValid(user) || !service.isEaqualPasswords(data)) {
+                return;
+            }
+            
+            return $api.post(service.urlHash, user).then(
                     function (response) {
                         if (!response || !response.data.access_token) {
                             return;
                         }
 
                         authService.setAuthorizedState(response.data.access_token, response.data.id);
-
-                        deferred.resolve(response);
                     },
                     function (response) {
-                        deferred.reject(response);
+
                     }
             );
-
-            return deferred.promise;
         };
-
-        service.logoutUser = function () {
-            var deferred = $q.defer();
-
-            $api.delete(service.urlHash).then(
-                    function (response) {
-                        authService.setUnauthorizedState();
-
-                        deferred.resolve(response);
-                    },
-                    function (response) {
-                        deferred.reject(response);
-                    }
-            );
-
-            return deferred.promise;
+        
+        service.isValid = function (user) {
+            if (!user.first_name || !user.last_name || !user.userName || !user.email || !emailService.validate(user.email)) {
+                return false;
+            }
+            
+            return true;
         };
 
         service.isEaqualPasswords = function (user) {
@@ -74,22 +65,8 @@ atomTestApp.service("loginService", [
             return true;
         };
 
-        service.prepareOptions = function (user) {
-            if (!user.options) {
-                user.options = [''];
-            } else {
-                user.options = JSON.parse(user.options);
-            }
-
-            return user;
-        };
-
-        service.getStatus = function () {
-            return $api.get('status');
-        };
-
-        service.ping = function () {
-            return $api.get('auths');
+        service.checkEmail = function (email) {
+            return emailService.validate(email);
         };
 
         return service;

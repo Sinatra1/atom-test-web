@@ -3,18 +3,21 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
                 .when('/', {
                     templateUrl: 'modules/auths/views/login.html',
-                    controller: 'userNameAuthController'
+                    controller: 'loginController'
                 })
                 .otherwise({
                     redirectTo: '/'
                 });
-    }]).controller('userNameAuthController', ['$scope', 'loginService', '$location', 'authService', 'bookService',
-    function ($scope, loginService, $location, authService, bookService) {
+    }]).controller('loginController', ['$scope', 'loginService', '$location', 'authService', 'regService',
+    function ($scope, loginService, $location, authService, regService) {
 
         if (authService.isAuth()) {
             $location.path('/' + bookService.urlHash);
         }
-
+        
+        $scope.loginService = loginService;
+        $scope.regService = regService;
+        
         $scope.loginUser = function (user) {
             $scope.userNameErrorMessage = false;
 
