@@ -10,7 +10,7 @@ atomTestApp.service('authService', [
         service.autoLogoutCountdown = null;
         service.timer = null;
         service.defaultError = 'Ошибка авторизации';
-        service.CURRENT_PRINCIPAL_KEY_NAME = 'fields';
+        service.CURRENT_USER_KEY_NAME = 'fields';
         service.TOKEN_EXPIRES_DELAY_SEC = 30 * 1000 * 60;
 
         service.setAuthorizedState = function (token, userId) {
@@ -37,14 +37,14 @@ atomTestApp.service('authService', [
 
             var expireDate = new Date();
             expireDate.setTime(expireDate.getTime() + service.TOKEN_EXPIRES_DELAY_SEC);
-
-            $cookies.putObject(service.CURRENT_PRINCIPAL_KEY_NAME, service.currentUser, {expires: expireDate});
+            
+            $cookies.putObject(service.CURRENT_USER_KEY_NAME, service.currentUser, {expires: expireDate});
         };
 
         service.removeCurrentUser = function () {
             service.authorized = false;
             
-            $cookies.remove(service.CURRENT_PRINCIPAL_KEY_NAME);
+            $cookies.remove(service.CURRENT_USER_KEY_NAME);
         };
 
         service.getCurrentUser = function () {
@@ -53,7 +53,7 @@ atomTestApp.service('authService', [
                 return service.currentUser;
             }
 
-            service.currentUser = $cookies.getObject(service.CURRENT_PRINCIPAL_KEY_NAME);
+            service.currentUser = $cookies.getObject(service.CURRENT_USER_KEY_NAME);
             
             if (typeof service.currentUser !== 'object') {
                 service.currentUser = angular.copy(defaultUser);

@@ -1,0 +1,105 @@
+.rb-search-form {
+    .form-group {
+        @include rb-inline-block;
+    }
+
+    .btn {
+        margin-top: 5px;
+    }
+}
+
+.rb-create-button {
+    @media (min-width: $screen-tablet) {
+        margin-left: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+@mixin rb-column-phone {
+    @media (max-width: $screen-phone) {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+.rb-column-id {
+    width: 80px;
+
+    @include rb-column-phone;
+}
+
+.rb-column-actions {
+    width: 150px;
+
+    @include rb-column-phone;
+}
+
+.rb-column-name {
+    max-width: 150px;
+    word-wrap: break-word;
+
+    @include rb-column-phone;
+}
+
+.rb-column-text {
+    max-width: 200px;
+    word-wrap: break-word;
+
+    @include rb-column-phone;
+}
+
+.rb-column-huge-text {
+    max-width: 300px;
+    word-wrap: break-word;
+
+    @include rb-column-phone;
+}
+
+.rb-column-btn {
+    width: 50px;
+
+    @include rb-column-phone;
+}
+
+.btn-block {
+    display: table;
+}
+
+.btn-block-icon {
+    width: 40px;
+    height: 40px;
+    padding-top: 10px;
+
+    @media (max-width: $screen-phone) {
+        width: 100%;
+        height: auto;
+        padding-top: auto;
+    }
+}
+
+.rb-sort-column {
+    &.rb-active {
+        .glyphicon-chevron-down:before, .glyphicon-chevron-up:before {
+            color: $red-color;
+        }
+    }
+
+    .glyphicon-chevron-down, .glyphicon-chevron-up {
+        margin-left: 10px;
+    }
+}
+
+.rb-sort-column {
+    cursor: pointer;
+}
+
+.rb-duration {
+    .rb-duration-label {
+        padding-top: $rb-padding-label;
+        padding-right: $rb-padding-medium;
+    }
+
+    .rb-duration-input {
+        padding-right: $rb-padding-medium;
+    }
+}

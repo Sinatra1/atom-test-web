@@ -60,6 +60,7 @@ var paths = {
         'client/modules/users/services/*.js',
         'client/modules/reg/services/*.js',
         'client/modules/reg/controllers/*.js',
+        'client/modules/books/controllers/*.js',
     ],
     images: [
 

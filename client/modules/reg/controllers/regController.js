@@ -18,23 +18,28 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
         $scope.regService = regService;
         $scope.loginService = loginService;
         $scope.userService = userService;
+        $scope.isInProccess = false;
 
         $scope.regUser = function (user) {
+            $scope.isInProccess = true;
             $scope.regErrorMessage = false;
             
             var request = regService.regUser(user);
 
             if (!request) {
+                $scope.isInProccess = false;
                 return;
             }
 
             request.then(
                     function (response) {
                         $scope.regErrorMessage = false;
+                        $scope.isInProccess = false;
                         $location.path('/' + bookService.urlHash);
                     },
                     function (response) {
                         $scope.regErrorMessage = true;
+                        $scope.isInProccess = false;
                     }
             );
         };

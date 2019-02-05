@@ -34,10 +34,6 @@ atomTestApp.factory('$api', ['$http', '$q', 'authService', 'ROUTES', function ($
             
             var headers = {};
             
-            if (data == null || (data != null && !data.withOutAuthorization)) {
-                headers.Authorization = authService.getCurrentUser().token;
-            }
-            
             if (data != null && data.files != null) {
                 headers['Content-Type'] = undefined;
                 data = data.files;

@@ -1,0 +1,49 @@
+<div class="hide" ng-class="{'rb-untihide': authService.authorized === true}">
+    <div>
+        <h1>{{bookService.titleList}}</h1>
+    </div>
+    <div ng-show="items.length > 0">
+        <table class="table table-striped rb-table-phone">
+            <thead>
+            <th class="rb-column-name">
+                Cover
+            </th>
+            <th class="rb-column-name">
+               Name
+            </th>
+            <th class="rb-column-name">
+                ISBN
+            </th>
+            <th class="rb-column-name">
+                Year
+            </th>
+            <th class="rb-column-text">
+                Description
+            </th>
+            <th class="rb-column-actions">Actions</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in items track by $index">
+                    <td class="rb-column-id">{{book.id}}</td>
+                    <td>{{book.name}}</td>
+                    <td>{{book.isbn}}</td>
+                    <td>{{book.year}}</td>
+                    <td class="rb-column-huge-text">{{book.description}}</td>
+                    <td class="rb-column-btn">
+                        <a ng-href="/books/{{book.id}}" class="btn btn-info btn-block-icon" title="Book detail info">
+                            <i class="glyphicon glyphicon-list-alt"></i>     
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-if="countItemsTotal > items.length" class="form-group">
+        <a ng-click="getItemsMore()" class="btn btn-success btn-block">
+            Show more
+        </a>
+    </div>
+    <div ng-show="items.length == 0" class="alert alert-danger col-md-5 col-sm-12 align-center text-center">
+        Book list is empty
+    </div>
+</div>

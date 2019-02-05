@@ -64,11 +64,11 @@
             </div>
         </div>
         <div ng-show="regErrorMessage && isValidForm()" class="alert alert-danger alert-error">
-            Wrong user name or password
+            User with this user name or email already exists
         </div>
         <div>
             <div class="btn-group form-group">
-                <button ng-disabled="!isValidForm()"
+                <button ng-disabled="!isValidForm() || isInProccess"
                         type="submit" class="btn btn-primary btn-block btn-block-small">{{regService.title}}</button>
             </div>
             <div class="btn-group form-group">

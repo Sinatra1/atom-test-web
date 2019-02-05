@@ -1,7 +1,7 @@
 'use strict';
 atomTestApp.service("userService", [
-    'authService', '$api', 'emailService', 'User',
-    function (authService, $api, emailService, User) {
+    'authService', '$api', '$q', 'emailService', 'User',
+    function (authService, $api, $q, emailService, User) {
         var service = {};
 
         service.urlHash = 'users';
@@ -15,31 +15,36 @@ atomTestApp.service("userService", [
 
         service.create = function (data) {
             var user = new User(data);
-            debugger;
+
             if (!service.isValid(user) || !service.isEaqualPasswords(data)) {
                 return;
             }
-            
-            return $api.post(service.urlHash, user).then(
+
+            var deferred = $q.defer();
+
+            $api.post(service.urlHash, user).then(
                     function (response) {
-                        debugger;
                         if (!response || !response.data.access_token) {
                             return;
                         }
 
                         authService.setAuthorizedState(response.data.access_token, response.data.id);
+
+                        deferred.resolve(response);
                     },
                     function (response) {
-                        debugger;
+                        deferred.reject(response);
                     }
             );
+
+            return deferred.promise;
         };
-        
+
         service.isValid = function (user) {
             if (!user.first_name || !user.last_name || !user.username || !user.email || !emailService.validate(user.email)) {
                 return false;
             }
-            
+
             return true;
         };
 
