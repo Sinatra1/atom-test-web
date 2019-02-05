@@ -14,27 +14,33 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
         if (authService.isAuth()) {
             $location.path('/' + bookService.urlHash);
         }
-        
+
         $scope.regService = regService;
         $scope.loginService = loginService;
         $scope.userService = userService;
-        
-        $scope.regUser = function (user) {
-            $scope.userNameErrorMessage = false;
 
-            regService.regUser(user).then(
+        $scope.regUser = function (user) {
+            $scope.regErrorMessage = false;
+            
+            var request = regService.regUser(user);
+
+            if (!request) {
+                return;
+            }
+
+            request.then(
                     function (response) {
-                        $scope.userNameErrorMessage = false;
+                        $scope.regErrorMessage = false;
                         $location.path('/' + bookService.urlHash);
                     },
                     function (response) {
-                        $scope.userNameErrorMessage = true;
+                        $scope.regErrorMessage = true;
                     }
             );
         };
-        
+
         $scope.isValidForm = function () {
-            return (!$scope.firstNameError && !$scope.lastNameError && !$scope.userNameError && !$scope.emailError && !$scope.passwordError && !$scope.passwordTwiceError);
+            return (!$scope.firstNameError && !$scope.lastNameError && !$scope.usernameError && !$scope.emailError && !$scope.passwordError && !$scope.passwordTwiceError);
         };
     }]);
 

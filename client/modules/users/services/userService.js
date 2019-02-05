@@ -15,13 +15,14 @@ atomTestApp.service("userService", [
 
         service.create = function (data) {
             var user = new User(data);
-            
+            debugger;
             if (!service.isValid(user) || !service.isEaqualPasswords(data)) {
                 return;
             }
             
             return $api.post(service.urlHash, user).then(
                     function (response) {
+                        debugger;
                         if (!response || !response.data.access_token) {
                             return;
                         }
@@ -29,13 +30,13 @@ atomTestApp.service("userService", [
                         authService.setAuthorizedState(response.data.access_token, response.data.id);
                     },
                     function (response) {
-
+                        debugger;
                     }
             );
         };
         
         service.isValid = function (user) {
-            if (!user.first_name || !user.last_name || !user.userName || !user.email || !emailService.validate(user.email)) {
+            if (!user.first_name || !user.last_name || !user.username || !user.email || !emailService.validate(user.email)) {
                 return false;
             }
             
