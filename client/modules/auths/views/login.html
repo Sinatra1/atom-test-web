@@ -2,17 +2,17 @@
     <h1>{{loginService.title}}</h1>
 
     <form role="form" name="authForm" ng-submit="loginUser(user);">
-        <div class="form-group" ng-class="{error: authForm.userName.$invalid}">
-            <label> User name </label>
+        <div class="form-group" ng-class="{error: authForm.username.$invalid}">
+            <label>User name</label>
             <div>
-                <input name="userName" ng-model="user.userName" type="text" ng-keyup="userNameError = authForm.userName.$dirty && authForm.userName.$invalid" ng-blur="showUserNameError = userNameError" class="form-control" placeholder="User name" required/>
+                <input name="username" ng-model="user.username" type="text" ng-keyup="usernameError = authForm.username.$dirty && authForm.username.$invalid" ng-blur="showUserNameError = usernameError" class="form-control" placeholder="User name" required/>
                 <div ng-show="showUserNameError" class="alert alert-danger alert-error">
                     User name is required
                 </div>
             </div>
         </div>
         <div class="form-group" ng-class="{error: authForm.password.$invalid}">
-            <label> Password </label>
+            <label>Password</label>
             <div>
                 <input name="password" ng-model="user.password" type="password" ng-keyup="passwordError = authForm.password.$dirty && authForm.password.$invalid" ng-blur="showPasswordError = passwordError" class="form-control" placeholder="Password" required/>
                 <div ng-show="showPasswordError" class="alert alert-danger alert-error">
@@ -20,12 +20,12 @@
                 </div>
             </div>
         </div>
-        <div ng-show="userNameErrorMessage && !showUserNameError && !showPasswordError" class="alert alert-danger alert-error">
+        <div ng-show="loginErrorMessage && !showUserNameError && !showPasswordError" class="alert alert-danger alert-error">
             Wrong user name or password
         </div>
         <div>
             <div class="btn-group form-group">
-                <button ng-disabled="authForm.$invalid || userNameError || passwordError"
+                <button ng-disabled="!isValidForm() || isInProccess"
                     type="submit" class="btn btn-primary btn-block btn-block-small">{{loginService.title}}</button>
             </div>
             <div class="btn-group form-group">

@@ -17,6 +17,11 @@
                     <a href="#/" class="navbar-brand">Atom test</a>
                 </div>
             </div>
+            <ul class="nav navbar-nav navbar-right menu__button-logout">
+                <li ng-if="menuVm.authService.isAuth()">
+                    <a href="" ng-click="menuVm.loginService.logoutUser()"><i class="glyphicon glyphicon-exit"></i> Sign out</a>
+                </li>
+            </ul>
         </nav>
         <div id="main" class="rb-container"> 
             <div ng-view></div>    

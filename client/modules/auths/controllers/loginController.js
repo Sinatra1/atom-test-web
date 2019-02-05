@@ -8,29 +8,43 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
                 .otherwise({
                     redirectTo: '/'
                 });
-    }]).controller('loginController', ['$scope', 'loginService', '$location', 'authService', 'regService',
-    function ($scope, loginService, $location, authService, regService) {
+    }]).controller('loginController', ['$scope', 'loginService', '$location', 'authService', 'regService', 'bookService',
+    function ($scope, loginService, $location, authService, regService, bookService) {
 
         if (authService.isAuth()) {
             $location.path('/' + bookService.urlHash);
         }
-        
+
         $scope.loginService = loginService;
         $scope.regService = regService;
-        
-        $scope.loginUser = function (user) {
-            $scope.userNameErrorMessage = false;
+        $scope.isInProccess = false;
 
-            loginService.loginUser(user).then(
+        $scope.loginUser = function (user) {
+            $scope.loginErrorMessage = false;
+            $scope.isInProccess = true;
+
+            var request = loginService.loginUser(user);
+
+            if (!request) {
+                $scope.isInProccess = false;
+            }
+
+            request.then(
                     function (response) {
-                        $scope.userNameErrorMessage = false;
+                        $scope.loginErrorMessage = false;
+                        $scope.isInProccess = false;
                         $location.path('/' + bookService.urlHash);
                     },
                     function (response) {
-                        $scope.userNameErrorMessage = true;
+                        $scope.loginErrorMessage = true;
+                        $scope.isInProccess = false;
                     }
             );
-        }
+        };
+        
+        $scope.isValidForm = function () {
+            return (!$scope.authForm.$invalid && !$scope.usernameError && !$scope.passwordError);
+        };
     }]);
 
 

@@ -45,7 +45,7 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
         };
 
         $scope.isValidForm = function () {
-            return (!$scope.firstNameError && !$scope.lastNameError && !$scope.usernameError && !$scope.emailError && !$scope.passwordError && !$scope.passwordTwiceError);
+            return (!$scope.regForm.$invalid && !$scope.firstNameError && !$scope.lastNameError && !$scope.usernameError && !$scope.emailError && !$scope.passwordError && !$scope.passwordTwiceError);
         };
     }]);
 
