@@ -1,0 +1,39 @@
+.navbar {
+    $menu-button-logout-width: 80px;
+
+    .menu__button-block {
+        $menu-button-width: 50px;
+        @include rb-min-tablet-pull-left;
+        @include rb-max-phone-float-none;
+
+        width: calc(100% - #{$menu-button-logout-width} - 5px);
+
+        @media (max-width: $screen-phone) {
+            width: 100%;
+        }
+
+        .menu__button {
+            @include rb-inline-block;
+            width: $menu-button-width;
+            padding-top: 12px;
+
+            .glyphicon-align-justify {
+                font-size: 30px;
+            }
+        }
+
+        .menu__title-block {
+            @include rb-inline-block;
+
+            width: calc(100% - #{$menu-button-width} - 5px);
+        }
+    }
+
+    .menu__button-logout {
+        @include rb-min-tablet-pull-right;
+        @include rb-max-phone-float-none;
+        @include rb-max-phone-hide-force;
+
+        width: $menu-button-logout-width;
+    }
+}

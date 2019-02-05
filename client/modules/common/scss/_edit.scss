@@ -1,0 +1,17 @@
+.rb-images {
+    @include rb-display-expanded-table;
+    malign-bottom: $rb-padding-medium;
+    margin-left: -$rb-padding-small;
+
+    .rb-image-item {
+        @include rb-inline-block;
+
+        img {
+            height: $rb-xxxhdpi-image-height;
+            width: $rb-xxxhdpi-image-width;
+            margin: $rb-padding-small;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+}

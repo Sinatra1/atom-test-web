@@ -1,0 +1,54 @@
+$brand-primary: #333333;
+$gray-light: #f2f2f2 !default;
+$border-radius-base: 0 !default;
+$brand-success: #47b716 !default;
+$gray-darker: #9d9d9d !default;
+$gray-darkest: #868686 !default;
+$blue-color: #0066cc;
+$red-color: #e01229;
+$green-color: #419641;
+$font-size-h1-xs: 29px;
+$white-color: white;
+
+$text-color: black;
+$input-color: $text-color;
+$rb-padding-big: 30px;
+$rb-padding-medium: 10px;
+$rb-padding-small: 5px;
+$rb-padding-label: 7px;
+$rb-xxxhdpi-image-height: 125px;
+$rb-xxxhdpi-image-width: 240px;
+
+
+$navbar-default-color: $brand-primary !default;
+$navbar-default-bg: $brand-primary !default;
+$navbar-default-border: $brand-primary !default;
+$navbar-margin-bottom: 0 !default;
+$nav-pills-active-link-hover-bg: #e2e2e2 !default;
+$nav-pills-active-link-hover-color: $brand-primary;
+$navbar-height: 60px !default;
+$navbar-default-brand-color: white !default;
+$navbar-default-brand-hover-color: darken($navbar-default-brand-color, 10%) !default;
+$navbar-default-link-color: $navbar-default-brand-color;
+$navbar-default-link-hover-color: $navbar-default-brand-hover-color;
+
+$btn-primary-bg: $red-color;
+$btn-primary-border: $red-color;
+
+$btn-success-bg: $brand-primary;
+$btn-success-border: $brand-primary;
+
+$btn-info-color: $white-color;
+$btn-info-bg: $blue-color;
+$btn-info-border: darken($btn-info-bg, 5%) !default;
+
+$bootstrap-sass-asset-helper: false;
+$icon-font-path: "../../assets/fonts/" !default;
+
+$close-color: $white-color;
+$close-text-shadow: $brand-primary;
+
+@mixin tab-focus() {
+  outline: 0 !important;
+  outline-offset: -2px;
+}

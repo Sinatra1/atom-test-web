@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+npm-debug.log
+bower_components
+build
+.sass-cache
+/admin-specialVehicles/nbproject/private/
+client/assets/js/routes.js
+nbproject

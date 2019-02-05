@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru_RU" ng-app="atomTestApp">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#333333">
+        <title>Atom test</title>
+        <link rel="shortcut icon" href="./favicon.ico">
+        <link href="./assets/css/app.css" rel="stylesheet" type="text/css">
+        <script src="./assets/js/libraries.js"></script>
+        <script src="./assets/js/app.js"></script>
+    </head>
+    <body ng-controller="menuController as menuVm">
+        <nav class="navbar navbar-default">
+            <div class="menu__button-block">
+                <div class="menu__title-block">
+                    <a href="#/" class="navbar-brand">Atom test</a>
+                </div>
+            </div>
+        </nav>
+        <div id="main" class="rb-container"> 
+            <div ng-view></div>    
+        </div>
+    </body>
+</html>

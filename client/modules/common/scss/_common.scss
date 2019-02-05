@@ -1,0 +1,293 @@
+.modal {
+    display: block; 
+
+    .dropdown-menu {
+        position: relative;
+    }
+
+    .close {
+        color: $brand-primary;
+    }
+
+    .rb-delete-close {
+        color: $red-color;
+    }
+}
+
+.modal-dialog {
+    display: table;
+
+    @media screen and (max-width: $screen-tablet) {
+        width: 95%;
+    }
+}
+
+.rb-modal-content-huge {
+    width: 1200px;
+
+    @media screen and (max-width: $screen-tablet) {
+        width: 100%;
+    }
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+
+.alert-error {
+    background: none !important;
+    border: none !important;
+    padding: 15px 0 0 0 !important;
+}
+
+.rb-table-striped {
+    &.table > thead > tr > th, 
+    &.table > thead > tr > td, 
+    &.table > tbody > tr > th, 
+    &.table > tbody > tr > td, 
+    &.table > tfoot > tr > th, 
+    &.table > tfoot > tr > td {
+        border-top: 0;
+    }
+}
+
+@media screen and (max-width: $screen-phone) {
+    .rb-table-phone {
+        td, th {
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+.float-none {
+    float: none !important;
+}
+
+@mixin rb-min-tablet-pull-right {
+    @media (min-width: $screen-tablet) {
+        float: right;
+    }
+}
+
+.rb-min-tablet-pull-right {
+    @include rb-min-tablet-pull-right;
+}
+
+@mixin rb-min-tablet-pull-left {
+    @media (min-width: $screen-tablet) {
+        float: left;
+    }
+}
+
+.rb-min-tablet-pull-left {
+    @include rb-min-tablet-pull-left;
+}
+
+@mixin rb-max-phone-float-none {
+    @media (max-width: $screen-phone) {
+        float: none;
+    }
+}
+
+.rb-max-phone-float-none {
+    @include rb-max-phone-float-none;
+}
+
+.align-center {
+    float: none !important;
+    margin: auto !important;
+}
+
+@media (min-width: $grid-float-breakpoint) {
+    .navbar-right {
+        margin-right: 0;
+    }
+}
+
+.rb-backgroud-gray-light {
+    background-color: $gray-light;
+}
+
+@mixin rb-inline-block {
+    display: inline-block;
+    float: left;
+    vertical-align: top;
+}
+
+.rb-inline-block {
+    @include rb-inline-block;
+}
+
+@mixin rb-min-tablet-inline-block {
+    @media (min-width: $screen-tablet) {
+        @include rb-inline-block;
+    }
+}
+
+.rb-min-tablet-inline-block {
+    @include rb-min-tablet-inline-block;
+}
+
+@mixin rb-display-table {
+    display: table;
+}
+
+.rb-display-table {
+    @include rb-display-table;
+}
+
+@mixin rb-display-expanded-table {
+    @include rb-display-table;
+    width: 100%;
+}
+
+.rb-display-expanded-table {
+    @include rb-display-expanded-table;
+}
+
+@mixin rb-max-phone-display-expanded-table {
+    @media (max-width: $screen-phone) {
+        @include rb-display-expanded-table;
+    }
+}
+
+.rb-max-phone-display-expanded-table {
+    @include rb-max-phone-display-expanded-table;
+}
+
+@mixin rb-display-block-force {
+    display: block !important;
+}
+
+.rb-untihide {
+    @include rb-display-block-force;
+}
+
+small {
+    color: $gray-darkest;
+}
+
+button.close, 
+button.close:focus,
+a.close, 
+a.close:focus {
+    opacity: 1;
+}
+
+.btn, button {
+    &,
+    &:active,
+        &.active {
+        &:focus,
+            &.focus {
+            outline: none;
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.hide-force {
+    display: none !important;
+}
+
+@mixin rb-max-phone-hide-force {
+    @media (max-width: $screen-phone) {
+        display: none !important;
+    }
+}
+
+.max-xs-hide-force {
+    @include rb-max-phone-hide-force;
+}
+
+.max-phone-hide-force {
+    @include rb-max-phone-hide-force;
+}
+
+@media (min-width: $screen-tablet) {
+
+    .min-sm-hide-force {
+        display: none !important;
+    }
+}
+
+@media (max-width: $screen-tablet) {
+    .navbar-nav {
+        margin: 0;
+    }
+}
+
+a, .rb-pointer {
+    cursor: pointer;
+}
+
+$rb-container-padding: 50px;
+$rb-container-padding-tablet: 20px;
+
+.rb-container {
+    padding-left: $rb-container-padding;
+    padding-right: $rb-container-padding;
+
+    @media (max-width: $screen-tablet) {
+        padding-left: $rb-container-padding-tablet;
+        padding-right: $rb-container-padding-tablet;
+        padding-bottom: $rb-container-padding-tablet;
+    }
+}
+
+
+h1 {
+    @media (max-width: $screen-xs-max) {
+        font-size: $font-size-h1-xs;
+    }
+}
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+.open {
+    > .dropdown-menu {
+        display: table;
+    }
+}
+
+:focus, :active {
+    outline: none;
+}
+
+.form-control[readonly] {
+    background-color: $white-color;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.btn-block-small {
+    @media (min-width: $screen-tablet) {
+        width: 100px;
+    }
+}
+
+.btn-group {
+    @media (max-width: $screen-phone) {
+        width: 100%;
+    }
+}

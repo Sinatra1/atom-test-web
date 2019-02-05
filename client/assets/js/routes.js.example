@@ -1,0 +1,7 @@
+'use strict';
+
+atomTestApp.constant('ROUTES', {
+    PRELOGIN: '/',
+    API_URL: 'http://api.atom-test.ru/',
+    HASH_KEY: '/#/'
+});

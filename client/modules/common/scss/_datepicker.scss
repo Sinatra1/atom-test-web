@@ -1,0 +1,101 @@
+.uib-datepicker-popup.dropdown-menu {
+    width: auto;
+    display: table;
+    float: none;
+    margin: 0;
+
+    .btn:active, .btn.active {
+        box-shadow: none;
+    }
+
+    .btn-default.uib-right, .btn-default.uib-left {
+        &:hover,
+            &:focus,
+            &.focus {
+            color: $red-color;
+            background-color: $white-color;
+            border-color: $white-color;
+        }
+
+        &:active:hover,
+            &.active  {
+            color: $red-color;
+            background-color: $white-color;
+            border-color: $white-color;
+        }
+    }
+
+    .btn, .btn-info, .btn-default.btn-info {
+        color: $text-color;
+        background-color: $red-color;
+        border-color: $red-color;
+
+        &:hover,
+            &:focus,
+            &.focus {
+            color: $text-color;
+            background-color: $red-color;
+            border-color: $red-color;
+        }
+
+        &:active:hover,
+            &.active  {
+            color: $white-color;
+            background-color: $red-color;
+            border-color: $red-color;
+        }
+    }
+
+    .btn-default.btn-info {
+        .text-info, .text-muted {
+            color: $white-color;
+        }
+    }
+
+    .btn-default {
+        background-color: $white-color;
+        border-color: $white-color;
+
+        &:active:hover, 
+            &.active,
+            &:hover,
+            &:focus,
+            &.focus {
+            color: $text-color;
+            background-color: $white-color;
+            border-color: $white-color;
+
+            .text-muted {
+                color: $state-info-text;
+            }
+        }
+    }
+
+    .text-muted {
+        color: $state-info-text;
+    }
+    
+    .uib-close {
+        border-color: $blue-color;
+        background-color: $blue-color;
+        color: $white-color;
+        
+        &:active:hover, 
+            &.active,
+            &:hover,
+            &:focus,
+            &.focus {
+            
+            border-color: $blue-color;
+            background-color: $blue-color;
+            color: $white-color;
+        }
+        
+        margin-bottom: 10px;
+    }
+}
+
+.uib-button-bar {
+    padding: 10px 9px 2px;
+}
+
