@@ -45,11 +45,13 @@ var paths = {
         'node_modules/angular-ui-bootstrap/src/position/position.js',
         'node_modules/angular-ui-bootstrap/src/debounce/debounce.js',
         'node_modules/angular-ui-bootstrap/src/modal/modal.js',
+        'bower_components/angular-isbn/src/angular-isbn.js'
     ],
     // These files are for your app's JavaScript
     appJS: [
         'client/assets/js/app.js',
         'client/assets/js/routes.js',
+        'client/modules/common/utils/*.js',
         'client/modules/common/models/*.js',
         'client/modules/auths/services/*.js',
         'client/modules/books/models/*.js',

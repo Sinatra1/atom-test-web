@@ -4,7 +4,8 @@ var atomTestApp = angular.module('atomTestApp', [
     'ngRoute',
     'ngCookies',
     'ui.bootstrap.modal',
-    'ui.mask'
+    'ui.mask',
+    'ja.isbn'
 ]).constant('SETTINGS', {
     TOKEN_EXPIRES_DELAY_SEC: 30 * 1000 * 60
 }).config(['$routeProvider', function ($routeProvider) {

@@ -50,6 +50,20 @@ atomTestApp.config([
         $scope.isValidForm = function () {
             return (!$scope.editForm.$invalid && !$scope.bookNameError && !$scope.isbnError && !$scope.yearError);
         };
+        
+        $scope.isValidIsbn = function (event) {
+            if (!event || !event.target) {
+                return false;
+            }
+            
+            var $element = angular.element(event.target);
+            
+            if ($element.hasClass('ng-valid-isbn13')) {
+                return true;
+            }
+            
+            return false;
+        };
 
         if ($routeParams.id) {
             $scope.getCurrentItemById($routeParams.id);
