@@ -64,6 +64,10 @@ atomTestApp.config([
             
             return false;
         };
+        
+        $scope.formatIsbn = function () {
+            $scope.currentItem.isbn = bookService.formatIsbn($scope.currentItem.isbn);
+        };
 
         if ($routeParams.id) {
             $scope.getCurrentItemById($routeParams.id);

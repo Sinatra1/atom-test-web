@@ -54,6 +54,10 @@ atomTestApp.service("bookService", [
 
             return true;
         };
+        
+        service.formatIsbn = function (isbn) {
+            return isbn.trim().replace(/[^0-9]+/g, "");
+        };
 
         service.formatName = function (book) {
             if (!book || !book.name) {

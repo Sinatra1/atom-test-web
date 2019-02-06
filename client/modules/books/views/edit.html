@@ -27,6 +27,7 @@
                        ng-model="currentItem.isbn" 
                        type="text" 
                        ng-keyup="isbnError = editForm.bookIsbn.$dirty && editForm.bookIsbn.$invalid" 
+                       ng-blur="formatIsbn()"
                        class="form-control" 
                        placeholder="ISBN"
                        ng-maxlength="17"
