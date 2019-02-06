@@ -1,0 +1,24 @@
+<div class="form-group rb-images">
+    <div class="rb-image-item" ng-repeat="imagesId in currentItem.imagesId track by $index">
+        <img style="background-image: url('{{imageService.getImageUrlById(imagesId)}}')"/>
+        <a ng-click="deleteImage($index)" title="Delete image" class="close rb-delete-close">&times;</a>
+    </div>
+    <div class="rb-image-item" ng-repeat="newImage in currentItem.newImages track by $index">
+        <img style="background-image: url('{{newImage}}')"/>
+        <a ng-click="deleteNewImage($index)" title="Delete image" class="close rb-delete-close">&times;</a>
+    </div>
+</div>
+<div ng-show="selectImageError" class="alert alert-danger alert-error form-group">
+    Only images are supported
+</div>
+<div class="col-md-3 col-sm-12 row float-none form-group">
+    <input id="imageFileInput" type="file" onchange="angular.element(this).scope().getImagePreview()" class="hide"/>
+    <a 
+        ng-disabled="imageButtonDisabled" 
+        ng-click="addImage()"
+        ng-show="!isSingleImageMode || (isSingleImageMode && !currentItem.imagesId.length && !currentItem.newImages.length)"
+        class="btn btn-default btn-block">
+        <span ng-show="showImageSpinner"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+        Add image
+    </a>
+</div>

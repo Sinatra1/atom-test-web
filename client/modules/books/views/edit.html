@@ -1,0 +1,78 @@
+<form role="form" name="editForm" class="col-md-5 col-sm-12 row" ng-submit="updateItem();">
+    <div class="modal-header">
+        <h4 class="modal-title">{{currentItemTitle}}</h4>
+    </div>
+    <div class="modal-body">
+        <ng-include src="'./modules/images/views/edit.html'"></ng-include>
+        <div class="form-group">
+            <label>Name</label>
+            <div>
+                <input name="bookName" 
+                       ng-model="currentItem.name" 
+                       type="text" 
+                       ng-keyup="nameError = editForm.bookName.$dirty && !currentItem.name" 
+                       ng-blur="showNameError = nameError" 
+                       class="form-control" 
+                       placeholder="Name" 
+                       required/>
+                <div ng-show="showNameError" class="alert alert-danger alert-error">
+                    Name is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>ISBN</label>
+            <div>
+                <input name="bookIsbn" 
+                       ng-model="currentItem.isbn" 
+                       type="text" 
+                       ng-keyup="isbnError = editForm.bookIsbn.$dirty && !currentItem.isbn" 
+                       ng-blur="showIsbnError = isbnError" 
+                       class="form-control" 
+                       placeholder="ISBN" 
+                       required/>
+                <div ng-show="showIsbnError" class="alert alert-danger alert-error">
+                    ISBN is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Year</label>
+            <div>
+                <input name="bookYear" 
+                       ng-model="currentItem.year" 
+                       type="text" 
+                       ng-keyup="yearError = editForm.bookYear.$dirty && !bookService.isValidYear(currentItem.year)" 
+                       ng-blur="showYearError = yearError" 
+                       class="form-control" 
+                       ui-mask="9999" 
+                       ui-mask-placeholder 
+                       ui-mask-placeholder-char="space"
+                       placeholder="Year" 
+                       required/>
+                <div ng-show="showYearError" class="alert alert-danger alert-error">
+                    Year must be more than 1400 and less than the current year
+                </div>
+                <div ng-show="editForm.bookYear.$dirty && editForm.bookYear.$invalid && !showYearError" class="alert alert-danger alert-error">
+                    Year is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <div>
+                <textarea placeholder="Description"
+                          class="form-control"
+                          ng-model="currentItem.description"
+                          autocomplete="off"></textarea>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 row float-none">
+            <button ng-disabled="!isValidForm() || showSpinner"
+                    type="submit" class="btn btn-primary btn-block">
+                <span ng-show="showSpinner"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                Save
+            </button>
+        </div>
+    </div>
+</form>

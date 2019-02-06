@@ -1,6 +1,6 @@
 'use strict';
-atomTestApp.controller('listItemsController', ['$scope', '$uibModal', '$timeout',
-    function ($scope, $uibModal, $timeout) {
+atomTestApp.controller('listItemsController', ['$scope', '$uibModal', '$timeout', 'authService',
+    function ($scope, $uibModal, $timeout, authService) {
 
         var vm = this;
 
@@ -16,6 +16,7 @@ atomTestApp.controller('listItemsController', ['$scope', '$uibModal', '$timeout'
         $scope.sortModeAsc = true;
         $scope.countItemsTotal = 0;
         $scope.items = [];
+        $scope.authService = authService;
 
         $scope.__editTemplateUrl = null; //'modules/users/views/editModal.html';
         $scope.__editControllerName = null; // 'editUserController';

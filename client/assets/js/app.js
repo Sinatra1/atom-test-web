@@ -3,10 +3,10 @@
 var atomTestApp = angular.module('atomTestApp', [
     'ngRoute',
     'ngCookies',
-    'ui.bootstrap.modal'
+    'ui.bootstrap.modal',
+    'ui.mask'
 ]).constant('SETTINGS', {
-    AUTO_LOGOUT_TIMEOUT: 30000,
-    AUTO_LOGOUT_TIMEOUT_POPUP: 30
+    TOKEN_EXPIRES_DELAY_SEC: 30 * 1000 * 60
 }).config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
     }]).config(['$httpProvider', function ($httpProvider) {

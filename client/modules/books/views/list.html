@@ -1,6 +1,9 @@
 <div class="hide" ng-class="{'rb-untihide': authService.authorized === true}">
-    <div>
+    <div class="rb-display-expanded-table form-group">
         <h1>{{bookService.titleList}}</h1>
+        <a ng-href="/#/books/edit" title="Create new book" class="btn btn-primary btn-block-icon pull-right">
+            <i class="glyphicon glyphicon-plus"></i>
+        </a>
     </div>
     <div ng-show="items.length > 0">
         <table class="table table-striped rb-table-phone">
@@ -30,7 +33,7 @@
                     <td>{{book.year}}</td>
                     <td class="rb-column-huge-text">{{book.description}}</td>
                     <td class="rb-column-btn">
-                        <a ng-href="/books/{{book.id}}" class="btn btn-info btn-block-icon" title="Book detail info">
+                        <a ng-href="/books/detail/{{book.id}}" class="btn btn-info btn-block-icon" title="Book detail info">
                             <i class="glyphicon glyphicon-list-alt"></i>     
                         </a>
                     </td>

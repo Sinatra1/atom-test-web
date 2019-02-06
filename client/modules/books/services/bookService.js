@@ -6,6 +6,7 @@ atomTestApp.service("bookService", [
         service.urlHash = 'books';
         service.titleList = 'Books';
         service.title = 'Book';
+        service.oldestBookYear = 1400;
 
         service.getUrl = function () {
             return ROUTES.HASH_KEY + service.urlHash;
@@ -16,6 +17,10 @@ atomTestApp.service("bookService", [
         };
 
         service.getById = function (bookId) {
+            if (!bookId) {
+                return;
+            }
+            
             return $api.get(service.urlHash + '/' + bookId);
         };
 
@@ -34,13 +39,28 @@ atomTestApp.service("bookService", [
         service.delete = function (book) {
             return $api.delete(service.urlHash + '/' + book.id);
         };
+        
+        service.isValidYear = function (year) {
+            if (!year) {
+                return false;
+            }
+            
+            year = parseInt(year);
+            var currentDate = new Date();
+            
+            if (year > currentDate.getFullYear() || year < service.oldestBookYear) {
+                return false;
+            }
+            
+            return true;
+        };
 
         service.formatName = function (book) {
             if (!book || !book.name) {
                 return '';
             }
 
-            return book.name;
+            return service.title + ' ' + book.name;
         };
 
         return service;

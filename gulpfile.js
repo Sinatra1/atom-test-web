@@ -37,6 +37,7 @@ var paths = {
         'node_modules/angular/angular.js',
         'node_modules/angular-route/angular-route.js',
         'node_modules/angular-cookies/angular-cookies.js',
+        'node_modules/angular-ui-mask/src/mask.js',
         'node_modules/angular-ui-bootstrap/src/isClass/isClass.js',
         'node_modules/angular-ui-bootstrap/src/dateparser/dateparser.js',
         'node_modules/angular-ui-bootstrap/src/multiMap/multiMap.js',
