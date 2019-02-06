@@ -57,6 +57,7 @@ var paths = {
         'client/modules/books/models/*.js',
         'client/modules/books/services/*.js',
         'client/modules/common/services/*.js',
+        'client/modules/images/services/*.js',
         'client/modules/common/controllers/*.js',
         'client/modules/auths/controllers/*.js',
         'client/modules/users/models/*.js',

@@ -30,6 +30,8 @@ atomTestApp.config([
         angular.extend(this, $controller('editItemController', {$scope: $scope}));
 
         $scope.bookService = bookService;
+        
+        $scope.currentItem = {id: ""};
 
         $scope.__getCreateCurrentItemTitle = function () {
             return "Create book";

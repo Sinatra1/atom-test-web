@@ -1,7 +1,7 @@
 'use strict';
-specialVehiclesAdminApp.service("imageService", [
-    '$logApi', '$api', 'ROUTES', 'guidService', '$q',
-    function ($logApi, $api, ROUTES, guidService, $q) {
+atomTestApp.service("imageService", [
+    '$api', 'ROUTES', 'guidService', '$q',
+    function ($api, ROUTES, guidService, $q) {
         var service = {};
 
         service.urlHash = 'images';
@@ -28,7 +28,7 @@ specialVehiclesAdminApp.service("imageService", [
                 return;
             }
 
-            return ROUTES.API_URL_REMOTE + 'images/' + imageId + '/catalogue_thumb_android_xxxhdpi';
+            return ROUTES.API_URL + 'images/' + imageId + '/catalogue_thumb_android_xxxhdpi';
         };
 
         service.create = function (imageFile) {
@@ -41,7 +41,7 @@ specialVehiclesAdminApp.service("imageService", [
             data.file.filename = guidService.generate();
             data.withOutAuthorization = true;
 
-            return $logApi.post(service.urlHash, data, true, null, {apiUrl: ROUTES.API_URL_REMOTE});
+            return $api.post(service.urlHash, data, true, null, {apiUrl: ROUTES.API_URL_REMOTE});
         };
 
         service.createImages = function (imagesFiles) {
@@ -62,7 +62,7 @@ specialVehiclesAdminApp.service("imageService", [
             
             data.withOutAuthorization = true;
 
-            $logApi.post(service.urlHash, data, false, null, {apiUrl: ROUTES.API_URL_REMOTE}).then(
+            $api.post(service.urlHash, data, false, null, {apiUrl: ROUTES.API_URL_REMOTE}).then(
                     function (response) {
                         deferred.resolve(response.data);
                     },
