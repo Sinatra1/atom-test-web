@@ -25,14 +25,13 @@
             <div>
                 <input name="bookIsbn" 
                        ng-model="currentItem.isbn" 
-                       type="number" 
-                       ng-keyup="isbnError = editForm.bookIsbn.$dirty && !isValidIsbn($event)" 
-                       ng-input="isbnError = editForm.bookIsbn.$dirty && !isValidIsbn($event)" 
-                       ng-blur="showIsbnError = isbnError" 
+                       type="text" 
+                       ng-keyup="isbnError = editForm.bookIsbn.$dirty && editForm.bookIsbn.$invalid" 
                        class="form-control" 
                        placeholder="ISBN"
+                       ng-maxlength="17"
                        isbn13/>
-                <div ng-show="editForm.bookIsbn.$dirty && showIsbnError" class="alert alert-danger alert-error">
+                <div ng-show="editForm.bookIsbn.$dirty && editForm.bookIsbn.$invalid" class="alert alert-danger alert-error">
                     ISBN is not valid
                 </div>
             </div>

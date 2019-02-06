@@ -48,7 +48,7 @@ atomTestApp.config([
         };
         
         $scope.isValidForm = function () {
-            return (!$scope.editForm.$invalid && !$scope.bookNameError && !$scope.isbnError && !$scope.yearError);
+            return (!$scope.editForm.$invalid && !$scope.bookNameError && $scope.editForm.bookIsbn.$dirty && !$scope.editForm.bookIsbn.$invalid && !$scope.yearError);
         };
         
         $scope.isValidIsbn = function (event) {
