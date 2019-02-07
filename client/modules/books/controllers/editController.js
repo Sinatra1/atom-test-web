@@ -38,7 +38,7 @@ atomTestApp.config([
         };
 
         $scope.__getEditCurrentItemTitle = function () {
-            return bookService.formatName($scope.currentItem.name);
+            return "Edit book";
         };
 
         $scope.__getItemByIdQuery = function (id) {
@@ -72,6 +72,15 @@ atomTestApp.config([
             }
             
             $location.path('/' + bookService.urlHash + '/detail/' + id);
+        };
+        
+        $scope.__afterInit = function () {
+            if (!$scope.currentItem || !$scope.currentItem.cover_image) {
+                return;
+            }
+            
+            $scope.currentItem.imagesId = [];
+            $scope.currentItem.imagesId.push($scope.currentItem.cover_image);
         };
 
         $scope.isValidForm = function () {

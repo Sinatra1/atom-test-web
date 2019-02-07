@@ -1,7 +1,7 @@
 'use strict';
 atomTestApp.service("imageService", [
-    '$api', 'ROUTES', 'guidService', '$q',
-    function ($api, ROUTES, guidService, $q) {
+    '$api', 'ROUTES', 'SETTINGS', 'guidService', '$q',
+    function ($api, ROUTES, SETTINGS, guidService, $q) {
         var service = {};
 
         service.urlHash = 'images';
@@ -28,7 +28,7 @@ atomTestApp.service("imageService", [
                 return;
             }
 
-            return ROUTES.API_URL + 'images/' + imageId;
+            return ROUTES.API_URL + SETTINGS.IMAGES_FOLDER_NAME + '/' + imageId;
         };
 
         service.create = function (imageFile) {

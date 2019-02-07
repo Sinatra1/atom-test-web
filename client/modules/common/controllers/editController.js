@@ -7,6 +7,7 @@ atomTestApp.controller('editItemController', [
         $scope.currentItem = {id: ""};
         $scope.currentItemTitle = null;
         $scope.isSingleImageMode = true;
+        $scope.imageService = imageService;
 
         $scope.__getCreateCurrentItemTitle = function () {
             return null; //example "Create item";

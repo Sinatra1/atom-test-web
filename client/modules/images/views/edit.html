@@ -1,6 +1,6 @@
 <div class="form-group rb-images">
-    <div class="rb-image-item" ng-repeat="imagesId in currentItem.imagesId track by $index">
-        <img style="background-image: url('{{imageService.getImageUrlById(imagesId)}}')"/>
+    <div class="rb-image-item" ng-repeat="imageId in currentItem.imagesId track by $index">
+        <img style="background-image: url('{{imageService.getImageUrlById(imageId)}}')"/>
         <a ng-click="deleteImage($index)" title="Delete image" class="close rb-delete-close">&times;</a>
     </div>
     <div class="rb-image-item" ng-repeat="newImage in currentItem.newImages track by $index">
