@@ -35,6 +35,10 @@ atomTestApp.controller('editItemController', [
         $scope.__close = function (item) {
             return item;
         };
+        
+        $scope.__onError = function (error) {
+            return error;
+        };
 
         $scope.__cancel = function () {
 
@@ -56,7 +60,8 @@ atomTestApp.controller('editItemController', [
 
         $scope.updateItem = function () {
             $scope.showSpinner = true;
-
+            $scope.setEditErrorMessage = false;
+            
             $timeout(function () {
                 var request = $scope.__updateItemQuery();
 
@@ -66,27 +71,25 @@ atomTestApp.controller('editItemController', [
                 }
 
                 request.then(function (response) {
-                    if (response.data != null && response.data.id != null) {
-                        $scope.updateItemSuccess(response.data);
-                    } else {
-                        $scope.updateItemError();
-                    }
+                    $scope.updateItemSuccess(response.data);
                 }, function (response) {
-                    $scope.updateItemError();
+                    $scope.updateItemError(response);
                 });
             }, 1000);
         };
 
         $scope.updateItemSuccess = function (item) {
             $scope.showSpinner = false;
-            $scope.setUserNameErrorMessage = false;
+            $scope.setEditErrorMessage = false;
             item = $scope.__beforeClose(item);
             $scope.__close(item);
         };
 
-        $scope.updateItemError = function () {
+        $scope.updateItemError = function (error) {
             $scope.showSpinner = false;
-            $scope.setUserNameErrorMessage = true;
+            $scope.setEditErrorMessage = true;
+            
+            $scope.__onError(error);
         };
 
         $scope.getCurrentItemById = function (id) {

@@ -66,6 +66,9 @@
                           autocomplete="off"></textarea>
             </div>
         </div>
+        <div ng-show="setEditErrorMessage && isValidForm()" class="alert alert-danger alert-error">
+            Book with this name and year or this ISBN already exists
+        </div>
         <div class="col-md-3 col-sm-12 row float-none">
             <button ng-disabled="!isValidForm() || showSpinner"
                     type="submit" class="btn btn-primary btn-block">

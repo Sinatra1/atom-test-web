@@ -24,8 +24,8 @@ atomTestApp.config([
                     redirectTo: '/'
                 });
     }]).controller('editBookController', [
-    '$scope', '$controller', '$routeParams', 'bookService',
-    function ($scope, $controller, $routeParams, bookService) {
+    '$scope', '$controller', '$routeParams', '$location', 'bookService',
+    function ($scope, $controller, $routeParams, $location, bookService) {
 
         angular.extend(this, $controller('editItemController', {$scope: $scope}));
 
@@ -64,6 +64,14 @@ atomTestApp.config([
             }
 
             return bookService.update(data);
+        };
+        
+        $scope.__close = function (id) {
+            if (!id) {
+                return;
+            }
+            
+            $location.path('/' + bookService.urlHash + '/detail/' + id);
         };
 
         $scope.isValidForm = function () {
