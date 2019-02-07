@@ -50,9 +50,13 @@ atomTestApp.config([
             data.files = new FormData();
 
             var keys = Object.keys($scope.currentItem);
+            
+            if ($scope.currentItem.deleteImagesIds != null && $scope.currentItem.deleteImagesIds[0] != null) {
+                $scope.currentItem.cover_image = '';
+            }
 
             for (var i = 0; i < keys.length; i++) {
-                if (keys[i] == 'newImages' || keys[i] == 'newImagesFiles') {
+                if (keys[i] == 'newImages' || keys[i] == 'newImagesFiles' || keys[i] == 'deleteImagesIds' || keys[i] == 'imagesId' || $scope.currentItem[keys[i]] === null) {
                     continue;
                 }
                 
@@ -62,8 +66,12 @@ atomTestApp.config([
             if ($scope.currentItem.newImagesFiles && $scope.currentItem.newImagesFiles[0]) {
                 data.files.append('cover_image_file', $scope.currentItem.newImagesFiles[0]);
             }
+            
+            if ($scope.currentItem.id) {
+                return bookService.update(data, $scope.currentItem.id);
+            }
 
-            return bookService.update(data);
+            return bookService.create(data);
         };
         
         $scope.__close = function (id) {

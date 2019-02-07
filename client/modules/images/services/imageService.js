@@ -16,7 +16,7 @@ atomTestApp.service("imageService", [
         };
 
         service.isImageFormat = function (file) {
-            if (file.type.indexOf('image') != -1 && (file.name.indexOf('jpg') != -1 || file.name.indexOf('png') != -1)) {
+            if (file.type.indexOf('image') != -1 && (file.name.indexOf('jpg') != -1 || file.name.indexOf('png') != -1 || file.name.indexOf('jpeg') != -1 || file.name.indexOf('gif') != -1)) {
                 return true;
             }
 

@@ -24,14 +24,24 @@ atomTestApp.service("bookService", [
             return $api.get(service.urlHash + '/' + bookId);
         };
 
-        service.update = function (data) {
+        service.create = function (data) {
+            if (!data) {
+                return;
+            }
+            
             var request = service.urlHash;
 
-            if (data.id) {
-                request += '/' + data.id;
+            return $api.post(request, new Book(data));
+        };
 
-                return $api.put(request, new Book(data));
+        service.update = function (data, id) {
+            if (!id || !data) {
+                return;
             }
+            
+            var request = service.urlHash;
+
+            request += '/' + id;
 
             return $api.post(request, new Book(data));
         };
@@ -54,12 +64,12 @@ atomTestApp.service("bookService", [
 
             return true;
         };
-        
+
         service.formatIsbn = function (isbn) {
             if (!isbn) {
                 return;
             }
-            
+
             return isbn.trim().replace(/[^0-9]+/g, "");
         };
 

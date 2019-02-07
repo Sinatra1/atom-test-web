@@ -11,7 +11,7 @@ atomTestApp.factory('Book', ['BaseModel', function (BaseModel) {
         Book.prototype.isbn = null;
         Book.prototype.year = null;
         Book.prototype.description = null;
-        Book.prototype.image_id = null;
+        Book.prototype.cover_image = null;
 
         return Book;
     }])
