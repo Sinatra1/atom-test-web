@@ -16,7 +16,7 @@ atomTestApp.service("imageService", [
         };
 
         service.isImageFormat = function (file) {
-            if (file.type.indexOf('image') != -1) {
+            if (file.type.indexOf('image') != -1 && (file.name.indexOf('jpg') != -1 || file.name.indexOf('png') != -1)) {
                 return true;
             }
 
@@ -28,7 +28,7 @@ atomTestApp.service("imageService", [
                 return;
             }
 
-            return ROUTES.API_URL + 'images/' + imageId + '/catalogue_thumb_android_xxxhdpi';
+            return ROUTES.API_URL + 'images/' + imageId;
         };
 
         service.create = function (imageFile) {

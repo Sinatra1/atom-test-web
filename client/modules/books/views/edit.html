@@ -1,8 +1,6 @@
 <form role="form" name="editForm" class="col-md-5 col-sm-12 row" ng-submit="updateItem();">
-    <div class="form-group">
-        <h2 class="modal-title">{{currentItemTitle}}</h2>
-    </div>
     <div class="modal-body">
+        <h2 class="modal-title">{{currentItemTitle}}</h2>
         <ng-include src="'./modules/images/views/edit.html'"></ng-include>
         <div class="form-group">
             <label>Name</label>

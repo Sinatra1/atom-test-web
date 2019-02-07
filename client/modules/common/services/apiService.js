@@ -40,7 +40,7 @@ atomTestApp.factory('$api', ['$http', '$q', 'authService', 'ROUTES', function ($
                 headers['Content-Type'] = undefined;
                 data = data.files;
             }
-
+            
             $http(angular.extend({
                 method: httpMethod,
                 url: getMethodUrl(method, httpMethod, data, config),

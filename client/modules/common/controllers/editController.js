@@ -58,14 +58,22 @@ atomTestApp.controller('editItemController', [
             $scope.showSpinner = true;
 
             $timeout(function () {
-                var item = $scope.__updateItemQuery();
+                var request = $scope.__updateItemQuery();
 
-                if (!item && !item.id) {
+                if (!request) {
                     $scope.updateItemError();
                     return;
                 }
 
-                $scope.updateItemSuccess(item);
+                request.then(function (response) {
+                    if (response.data != null && response.data.id != null) {
+                        $scope.updateItemSuccess(response.data);
+                    } else {
+                        $scope.updateItemError();
+                    }
+                }, function (response) {
+                    $scope.updateItemError();
+                });
             }, 1000);
         };
 

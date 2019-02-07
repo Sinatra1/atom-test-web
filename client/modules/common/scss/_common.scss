@@ -8,8 +8,12 @@
     .close {
         color: $brand-primary;
     }
+}
 
-    .rb-delete-close {
+.rb-delete-close {
+    color: $red-color;
+    
+    &:hover, &:focus {
         color: $red-color;
     }
 }
