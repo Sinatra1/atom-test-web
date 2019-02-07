@@ -6,6 +6,7 @@ atomTestApp.service("imageService", [
 
         service.urlHash = 'images';
         service.imagesId = [];
+        service.allowedExtentions = ['jpg', 'png', 'jpeg', 'gif', 'svg'];
 
         service.getById = function (imageId) {
             if (!imageId) {
@@ -16,11 +17,21 @@ atomTestApp.service("imageService", [
         };
 
         service.isImageFormat = function (file) {
-            if (file.type.indexOf('image') != -1 && (file.name.indexOf('jpg') != -1 || file.name.indexOf('png') != -1 || file.name.indexOf('jpeg') != -1 || file.name.indexOf('gif') != -1)) {
-                return true;
+            var name = file.name.toLowerCase();
+            
+            if (file.type.indexOf('image') === -1) {
+                return false;
+            }
+            
+            var isAllowedExtention = false;
+            
+            for (var i = 0; i < service.allowedExtentions.length; i++) {
+                if (name.indexOf(service.allowedExtentions[i]) !== -1) {
+                    isAllowedExtention = true;
+                }
             }
 
-            return false;
+            return isAllowedExtention;
         };
 
         service.getImageUrlById = function (imageId) {
