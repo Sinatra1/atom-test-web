@@ -9,7 +9,10 @@
     </div>
 </div>
 <div ng-show="selectImageError" class="alert alert-danger alert-error form-group">
-    Only jpg and png images are supported
+    Only jpg, png, jpeg, gif images are supported
+</div>
+<div ng-show="selectImageSizeError" class="alert alert-danger alert-error form-group">
+    Max image size is 2 Mb
 </div>
 <div class="col-md-3 col-sm-12 row float-none form-group">
     <input id="imageFileInput" type="file" onchange="angular.element(this).scope().getImagePreview()" class="hide"/>

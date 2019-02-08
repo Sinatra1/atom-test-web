@@ -6,7 +6,8 @@ atomTestApp.service("imageService", [
 
         service.urlHash = 'images';
         service.imagesId = [];
-        service.allowedExtentions = ['jpg', 'png', 'jpeg', 'gif', 'svg'];
+        service.allowedExtentions = ['jpg', 'png', 'jpeg', 'gif'];
+        service.maxSize = 2 * 1024 * 1024; //2Mb
 
         service.getById = function (imageId) {
             if (!imageId) {
@@ -17,6 +18,10 @@ atomTestApp.service("imageService", [
         };
 
         service.isImageFormat = function (file) {
+            if (!file) {
+                return false;
+            }
+            
             var name = file.name.toLowerCase();
             
             if (file.type.indexOf('image') === -1) {
@@ -32,6 +37,14 @@ atomTestApp.service("imageService", [
             }
 
             return isAllowedExtention;
+        };
+        
+        service.isAllowedFileSize = function (file) {
+            if (!file) {
+                return false;
+            }
+            
+            return file.size <= service.maxSize;
         };
 
         service.getImageUrlById = function (imageId) {

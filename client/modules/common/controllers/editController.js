@@ -138,15 +138,22 @@ atomTestApp.controller('editItemController', [
 
         $scope.getImagePreview = function () {
             var file = vm.imageFileInput.files[0];
-
+            
+            $scope.selectImageSizeError = false;
+            $scope.selectImageError = false;
+            
             if (!imageService.isImageFormat(file)) {
                 $scope.selectImageError = true;
                 $scope.$apply();
                 return;
             }
-
-            $scope.selectImageError = false;
-
+            
+            if (!imageService.isAllowedFileSize(file)) {
+                $scope.selectImageSizeError = true;
+                $scope.$apply();
+                return;
+            }
+            
             var reader = new FileReader();
 
             reader.onload = function (event) {
