@@ -23,10 +23,10 @@
             <th class="rb-column-name">
                 Year
             </th>
-            <th class="rb-column-text">
+            <th class="rb-column-huge-text">
                 Description
             </th>
-            <th class="rb-column-actions">Actions</th>
+            <th class="rb-column-id">Actions</th>
             </thead>
             <tbody>
                 <tr ng-repeat="book in items track by $index">
@@ -34,11 +34,11 @@
                     <td class="rb-column-name">
                         <ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>
                     </td>
-                    <td>{{book.name}}</td>
-                    <td>{{book.isbn}}</td>
-                    <td>{{book.year}}</td>
+                    <td class="rb-column-name">{{book.name}}</td>
+                    <td class="rb-column-name">{{book.isbn}}</td>
+                    <td class="rb-column-name">{{book.year}}</td>
                     <td class="rb-column-huge-text">{{book.description}}</td>
-                    <td class="rb-column-btn">
+                    <td class="rb-column-id">
                         <a ng-href="/#/books/detail/{{book.id}}" class="btn btn-info btn-block-icon" title="Book detail info">
                             <i class="glyphicon glyphicon-list-alt"></i>     
                         </a>

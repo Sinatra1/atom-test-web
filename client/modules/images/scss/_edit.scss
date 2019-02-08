@@ -5,13 +5,19 @@
 
     .rb-image-item {
         @include rb-inline-block;
+        width: 100%;
 
         img {
             height: $rb-xxxhdpi-image-height;
             width: $rb-xxxhdpi-image-width;
             margin: $rb-padding-small;
-            background-position: center;
+            background-position: top;
             background-size: cover;
+
+            @media screen and (max-width: $screen-phone) {
+                height: $rb-xxxhdpi-image-height;
+                width: 100%;
+            }
         }
     }
 }

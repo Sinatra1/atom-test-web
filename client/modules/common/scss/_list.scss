@@ -1,13 +1,3 @@
-.rb-search-form {
-    .form-group {
-        @include rb-inline-block;
-    }
-
-    .btn {
-        margin-top: 5px;
-    }
-}
-
 .rb-create-button {
     @media (min-width: $screen-tablet) {
         margin-left: 50px;

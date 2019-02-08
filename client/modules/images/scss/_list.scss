@@ -1,0 +1,17 @@
+table {
+    .rb-images {
+        .rb-image-item {
+            img {
+                @media screen and (max-width: $screen-lg-desktop) {
+                    height: $rb-lg-image-height;
+                    width: $rb-lg-image-width;
+                }
+
+                @media screen and (max-width: $screen-phone) {
+                    height: $rb-xxxhdpi-image-height;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
