@@ -16,10 +16,10 @@ $rb-padding-big: 30px;
 $rb-padding-medium: 10px;
 $rb-padding-small: 5px;
 $rb-padding-label: 7px;
-$rb-xxxhdpi-image-height: 125px;
-$rb-xxxhdpi-image-width: 240px;
-$rb-lg-image-height: 62px;
-$rb-lg-image-width: 120px;
+$rb-xxxhdpi-image-height: 240px;
+$rb-xxxhdpi-image-width: $rb-xxxhdpi-image-height;
+$rb-lg-image-height: 100px;
+$rb-lg-image-width: $rb-lg-image-height;
 
 
 $navbar-default-color: $brand-primary !default;

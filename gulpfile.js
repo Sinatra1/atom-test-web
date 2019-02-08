@@ -67,7 +67,7 @@ var paths = {
         'client/modules/books/controllers/*.js',
     ],
     images: [
-
+        'client/modules/common/images/*.*',
     ],
     fonts: [
         'node_modules/bootstrap-sass/assets/fonts/bootstrap/*'
