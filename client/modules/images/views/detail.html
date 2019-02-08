@@ -1,0 +1,8 @@
+<div class="form-group rb-images">
+    <div class="rb-image-item" ng-if="currentItem.cover_image">
+        <img style="background-image: url('{{imageService.getImageUrlById(currentItem.cover_image)}}')"/>
+    </div>
+    <div class="rb-image-item" ng-if="!currentItem.cover_image">
+        <i class="glyphicon glyphicon-picture"></i>
+    </div>
+</div>

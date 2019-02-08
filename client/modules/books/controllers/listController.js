@@ -10,12 +10,13 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
                     redirectTo: '/'
                 });
     }]).controller('listBooksController', [
-    '$scope', '$controller', 'bookService',
-    function ($scope, $controller, bookService) {
+    '$scope', '$controller', 'bookService', 'imageService',
+    function ($scope, $controller, bookService, imageService) {
 
         angular.extend(this, $controller('listItemsController', {$scope: $scope}));
 
         $scope.bookService = bookService;
+        $scope.imageService = imageService;
 
         $scope.__getItemsQuery = function (params) {
             return bookService.getList(angular.copy(params));

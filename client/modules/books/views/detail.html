@@ -1,0 +1,23 @@
+<div class="modal-body col-md-5 col-sm-12 row">
+    <h2 class="modal-title">{{currentItemTitle}}</h2>
+    <ng-include src="'./modules/images/views/detail.html'"></ng-include>
+    <div class="form-group">
+        <label>Name</label>
+        <div>{{currentItem.name}}</div>
+    </div>
+    <div class="form-group">
+        <label>ISBN</label>
+        <div>{{currentItem.isbn}}</div>
+    </div>
+    <div class="form-group">
+        <label>Year</label>
+        <div>{{currentItem.year}}</div>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <div>{{currentItem.description}}</div>
+    </div>
+    <div class="col-md-3 col-sm-12 row float-none">
+        <a ng-href="/#/books/edit/{{currentItem.id}}" class="btn btn-primary btn-block">Edit</a>
+    </div>
+</div>

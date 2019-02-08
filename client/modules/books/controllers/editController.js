@@ -28,10 +28,10 @@ atomTestApp.config([
     function ($scope, $controller, $routeParams, $location, bookService) {
 
         angular.extend(this, $controller('editItemController', {$scope: $scope}));
+        
+        var vm = this;
 
         $scope.bookService = bookService;
-
-        $scope.currentItem = {id: ""};
 
         $scope.__getCreateCurrentItemTitle = function () {
             return "Create book";
@@ -46,6 +46,18 @@ atomTestApp.config([
         };
 
         $scope.__updateItemQuery = function () {
+            var data = vm.prepareBookForRequest();
+            
+            if ($scope.currentItem.id) {
+                return bookService.update(data, $scope.currentItem.id);
+            }
+
+            return bookService.create(data);
+        };
+        
+        vm.prepareBookForRequest = function () {
+            var notAllowedFields = ['newImages', 'newImagesFiles', 'deleteImagesIds', 'imagesId'];
+            
             var data = {};
             data.files = new FormData();
 
@@ -56,7 +68,7 @@ atomTestApp.config([
             }
 
             for (var i = 0; i < keys.length; i++) {
-                if (keys[i] == 'newImages' || keys[i] == 'newImagesFiles' || keys[i] == 'deleteImagesIds' || keys[i] == 'imagesId' || $scope.currentItem[keys[i]] === null) {
+                if (notAllowedFields.indexOf(keys[i]) !== -1 || $scope.currentItem[keys[i]] === null) {
                     continue;
                 }
                 
@@ -67,11 +79,7 @@ atomTestApp.config([
                 data.files.append('cover_image_file', $scope.currentItem.newImagesFiles[0]);
             }
             
-            if ($scope.currentItem.id) {
-                return bookService.update(data, $scope.currentItem.id);
-            }
-
-            return bookService.create(data);
+            return data;
         };
         
         $scope.__close = function (id) {

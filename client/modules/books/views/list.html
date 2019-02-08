@@ -9,10 +9,13 @@
         <table class="table table-striped rb-table-phone">
             <thead>
             <th class="rb-column-name">
+                Id
+            </th>
+            <th class="rb-column-name">
                 Cover
             </th>
             <th class="rb-column-name">
-               Name
+                Name
             </th>
             <th class="rb-column-name">
                 ISBN
@@ -28,6 +31,9 @@
             <tbody>
                 <tr ng-repeat="book in items track by $index">
                     <td class="rb-column-id">{{book.id}}</td>
+                    <td class="rb-column-name">
+                        <ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>
+                    </td>
                     <td>{{book.name}}</td>
                     <td>{{book.isbn}}</td>
                     <td>{{book.year}}</td>
