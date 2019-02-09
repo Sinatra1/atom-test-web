@@ -1,13 +1,16 @@
 'use strict';
 atomTestApp.controller('editItemController', [
-    '$scope', '$timeout', 'imageService',
-    function ($scope, $timeout, imageService) {
+    '$scope', '$timeout', '$uibModal', 'imageService',
+    function ($scope, $timeout, $uibModal, imageService) {
         var vm = this;
 
         $scope.currentItem = {id: ""};
         $scope.currentItemTitle = null;
         $scope.isSingleImageMode = true;
         $scope.imageService = imageService;
+        
+        $scope.__deleteTemplateUrl = null; //'modules/users/views/deleteModal.html';
+        $scope.__deleteControllerName = null; // 'deleteUserController';
 
         $scope.__getCreateCurrentItemTitle = function () {
             return null; //example "Create item";
@@ -43,6 +46,40 @@ atomTestApp.controller('editItemController', [
 
         $scope.__cancel = function () {
 
+        };
+        
+        $scope.__transmitDataToDeleteController = function () {
+            return {};
+
+            /*return {
+             currentItem: function () {
+             return angular.copy($scope.currentItem);
+             }
+             };*/
+        };
+        
+        $scope.__afterDelete = function (currentItem) {
+            //$location.path('/' + bookService.urlHash);
+        };
+        
+        vm.showDeleteModal = function (item) {
+            $scope.currentItem = item;
+
+            var modalInstance = $uibModal.open({
+                animation: vm.animationsEnabled,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: $scope.__deleteTemplateUrl,
+                controller: $scope.__deleteControllerName,
+                controllerAs: 'vm',
+                resolve: $scope.__transmitDataToDeleteController()
+            });
+
+            modalInstance.result.then(function (currentItem) {
+                $scope.currentItem = null;
+                $scope.__afterDelete(currentItem);
+            }, function () {
+            });
         };
 
         $scope.init = function (currentItem) {

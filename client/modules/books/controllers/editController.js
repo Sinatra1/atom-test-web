@@ -28,10 +28,13 @@ atomTestApp.config([
     function ($scope, $controller, $routeParams, $location, bookService) {
 
         angular.extend(this, $controller('editItemController', {$scope: $scope}));
-        
+
         var vm = this;
 
         $scope.bookService = bookService;
+
+        $scope.__deleteTemplateUrl = 'modules/common/views/deleteModal.html';
+        $scope.__deleteControllerName = 'deleteBookController';
 
         $scope.__getCreateCurrentItemTitle = function () {
             return "Create book";
@@ -47,22 +50,34 @@ atomTestApp.config([
 
         $scope.__updateItemQuery = function () {
             var data = vm.prepareBookForRequest();
-            
+
             if ($scope.currentItem.id) {
                 return bookService.update(data, $scope.currentItem.id);
             }
 
             return bookService.create(data);
         };
-        
+
+        $scope.__transmitDataToDeleteController = function () {
+            return {
+                currentBook: function () {
+                    return angular.copy($scope.currentItem);
+                }
+            };
+        };
+
+        $scope.__afterDelete = function (currentItem) {
+            $location.path('/' + bookService.urlHash);
+        };
+
         vm.prepareBookForRequest = function () {
             var notAllowedFields = ['newImages', 'newImagesFiles', 'deleteImagesIds', 'imagesId'];
-            
+
             var data = {};
             data.files = new FormData();
 
             var keys = Object.keys($scope.currentItem);
-            
+
             if ($scope.currentItem.deleteImagesIds != null && $scope.currentItem.deleteImagesIds[0] != null) {
                 $scope.currentItem.cover_image = '';
             }
@@ -71,30 +86,30 @@ atomTestApp.config([
                 if (notAllowedFields.indexOf(keys[i]) !== -1 || $scope.currentItem[keys[i]] === null) {
                     continue;
                 }
-                
+
                 data.files.append(keys[i], $scope.currentItem[keys[i]]);
             }
 
             if ($scope.currentItem.newImagesFiles && $scope.currentItem.newImagesFiles[0]) {
                 data.files.append('cover_image_file', $scope.currentItem.newImagesFiles[0]);
             }
-            
+
             return data;
         };
-        
+
         $scope.__close = function (id) {
             if (!id) {
                 return;
             }
-            
+
             $location.path('/' + bookService.urlHash + '/detail/' + id);
         };
-        
+
         $scope.__afterInit = function () {
             if (!$scope.currentItem || !$scope.currentItem.cover_image) {
                 return;
             }
-            
+
             $scope.currentItem.imagesId = [];
             $scope.currentItem.imagesId.push($scope.currentItem.cover_image);
         };

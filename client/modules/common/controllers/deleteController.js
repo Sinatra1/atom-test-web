@@ -6,8 +6,8 @@ atomTestApp.controller('deleteItemController', ['$scope', '$uibModalInstance', '
 
         $scope.currentItemTitle = ''; //Удалить клиента
         $scope.currentItemTitleGenitive = ''; //удаления клиента
-        $scope.deleteButtonTitle = 'Удалить';
-        $scope.cancelButtonTitle = 'Отмена';
+        $scope.deleteButtonTitle = 'Delete';
+        $scope.cancelButtonTitle = 'Cancel';
 
         $scope.__deleteItemQuery = function (item) {
             return null;//userService.delete(item);
@@ -19,20 +19,29 @@ atomTestApp.controller('deleteItemController', ['$scope', '$uibModalInstance', '
 
         $scope.deleteItem = function () {
             $scope.showSpinner = true;
+            $scope.setTitleErrorMessage = false;
 
             $timeout(function () {
-                var result = $scope.__deleteItemQuery($scope.currentItem);
+                var request = $scope.__deleteItemQuery($scope.currentItem);
 
-                if (result) {
-                    $scope.showSpinner = false;
-                    $scope.setTitleErrorMessage = false;
-                    $uibModalInstance.close($scope.currentItem);
+                if (!request) {
+                    $scope.deleteItemError();
                     return;
                 }
 
-                $scope.showSpinner = false;
-                $scope.setTitleErrorMessage = true;
+                request.then(function (response) {
+                    $scope.showSpinner = false;
+                    $scope.setTitleErrorMessage = false;
+                    $uibModalInstance.close($scope.currentItem);
+                }, function (response) {
+                    $scope.deleteItemError(response);
+                });
             }, 1000);
+        };
+
+        $scope.deleteItemError = function () {
+            $scope.showSpinner = false;
+            $scope.setTitleErrorMessage = true;
         };
 
         $scope.cancel = function () {
