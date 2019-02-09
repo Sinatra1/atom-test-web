@@ -4,6 +4,7 @@ var atomTestApp = angular.module('atomTestApp', [
     'ngRoute',
     'ngCookies',
     'ui.bootstrap.modal',
+    'ui.bootstrap.dropdown',
     'ui.mask',
     'ja.isbn'
 ]).constant('SETTINGS', {

@@ -45,6 +45,7 @@ var paths = {
         'node_modules/angular-ui-bootstrap/src/position/position.js',
         'node_modules/angular-ui-bootstrap/src/debounce/debounce.js',
         'node_modules/angular-ui-bootstrap/src/modal/modal.js',
+        'node_modules/angular-ui-bootstrap/src/dropdown/dropdown.js',
         'bower_components/angular-isbn/src/angular-isbn.js'
     ],
     // These files are for your app's JavaScript
