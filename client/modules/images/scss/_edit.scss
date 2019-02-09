@@ -7,6 +7,17 @@
         @include rb-inline-block;
         width: 100%;
 
+        &.rb-image-edit {
+            width: auto;
+
+            img {
+                @media screen and (max-width: $screen-phone) {
+                    height: $rb-xxxhdpi-image-height;
+                    width: $rb-xxxhdpi-image-width;
+                }
+            }
+        }
+
         img {
             height: $rb-xxxhdpi-image-height;
             width: $rb-xxxhdpi-image-width;

@@ -1,6 +1,10 @@
-<div class="hide" ng-class="{'rb-untihide': authService.authorized === true}">
+<div class="hide modal-body" ng-class="{'rb-untihide': authService.authorized === true}">
     <div class="rb-display-expanded-table form-group">
-        <h1>{{bookService.titleList}}</h1>
+        <ol class="breadcrumb">
+            <li>
+                {{bookService.titleList}}
+            </li>
+        </ol>
         <a ng-href="/#/books/edit" title="Create new book" class="btn btn-primary btn-block-icon pull-right">
             <i class="glyphicon glyphicon-plus"></i>
         </a>
@@ -23,6 +27,9 @@
             <th class="rb-column-name">
                 Year
             </th>
+            <th class="rb-column-name">
+                Created date
+            </th>
             <th class="rb-column-huge-text">
                 Description
             </th>
@@ -32,18 +39,19 @@
                 <tr ng-repeat="book in items track by $index">
                     <td class="rb-column-id">{{book.id}}</td>
                     <td class="rb-column-name">
-                        <ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>
-                    </td>
-                    <td class="rb-column-name">{{book.name}}</td>
-                    <td class="rb-column-name">{{book.isbn}}</td>
-                    <td class="rb-column-name">{{book.year}}</td>
-                    <td class="rb-column-huge-text">{{book.description}}</td>
-                    <td class="rb-column-id">
-                        <a ng-href="/#/books/detail/{{book.id}}" class="btn btn-info btn-block-icon" title="Book detail info">
-                            <i class="glyphicon glyphicon-list-alt"></i>     
-                        </a>
-                    </td>
-                </tr>
+            <ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>
+            </td>
+            <td class="rb-column-name">{{book.name}}</td>
+            <td class="rb-column-name">{{book.isbn}}</td>
+            <td class="rb-column-name">{{book.year}}</td>
+            <td class="rb-column-huge-text">{{book.description}}</td>
+            <td class="rb-column-huge-text">{{book.created}}</td>
+            <td class="rb-column-id">
+                <a ng-href="/#/books/detail/{{book.id}}" class="btn btn-info btn-block-icon" title="View book">
+                    <i class="glyphicon glyphicon-list-alt"></i>     
+                </a>
+            </td>
+            </tr>
             </tbody>
         </table>
     </div>

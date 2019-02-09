@@ -1,5 +1,10 @@
 <div class="modal-body col-md-5 col-sm-12 row">
-    <h2 class="modal-title">{{currentItemTitle}}</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a ng-href="/#/{{bookService.urlHash}}">{{bookService.titleList}}</a>
+        </li>
+        <li class="active">View book</li>
+    </ol>
     <ng-include src="'./modules/images/views/detail.html'"></ng-include>
     <div class="form-group">
         <label>Name</label>
@@ -18,6 +23,6 @@
         <div>{{currentItem.description}}</div>
     </div>
     <div class="col-md-3 col-sm-12 row float-none">
-        <a ng-href="/#/books/edit/{{currentItem.id}}" class="btn btn-primary btn-block">Edit</a>
+        <a ng-href="/#/{{bookService.urlHash}}/edit/{{currentItem.id}}" class="btn btn-primary btn-block">Edit</a>
     </div>
 </div>

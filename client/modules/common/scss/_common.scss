@@ -295,3 +295,11 @@ input::-webkit-inner-spin-button {
         width: 100%;
     }
 }
+
+.breadcrumb > li{
+    font-size: $font-size-h1;
+    
+    @media (max-width: $screen-phone) {
+        font-size: $font-size-h4;
+    }
+}

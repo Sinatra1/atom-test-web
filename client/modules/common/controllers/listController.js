@@ -7,11 +7,14 @@ atomTestApp.controller('listItemsController', ['$scope', '$uibModal', '$timeout'
         vm.animationsEnabled = true;
         vm.showMessageDelay = 5000;
         $scope.currentItem = {id: ""};
-        $scope.defaultLimitBig = 20;
-        $scope.defaultLimitSmall = 10;
-        $scope.defaultLimit = $scope.defaultLimitBig;
+        $scope.defaultLimit = 20;
         $scope.defaultOffset = 0;
-        $scope.searchForm = {offset: $scope.defaultOffset, limit: $scope.defaultLimit};
+        $scope.searchForm = {
+            offset: $scope.defaultOffset, 
+            limit: $scope.defaultLimit, 
+            order_by: 'created', 
+            order_mode: 'desc'
+        };
         $scope.sortFieldName;
         $scope.sortModeAsc = true;
         $scope.countItemsTotal = 0;
@@ -221,6 +224,8 @@ atomTestApp.controller('listItemsController', ['$scope', '$uibModal', '$timeout'
                     }, function (response) {
                 $scope.searchForm.offset -= $scope.defaultOffset;
             });
+            
+            $scope.getCountItemsTotal($scope.searchForm);
         };
 
         $scope.getItems = function (params) {

@@ -50,6 +50,8 @@ $icon-font-path: "../../assets/fonts/" !default;
 $close-color: $white-color;
 $close-text-shadow: $brand-primary;
 
+$breadcrumb-active-color: $brand-primary;
+
 @mixin tab-focus() {
   outline: 0 !important;
   outline-offset: -2px;
