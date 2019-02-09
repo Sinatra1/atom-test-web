@@ -156,7 +156,7 @@
     }
 }
 
-.rb-max-phone-display-expanded-table {
+.hide {
     @include rb-max-phone-display-expanded-table;
 }
 
@@ -190,7 +190,7 @@ a.close:focus {
     }
 }
 
-.hide {
+.rb-hide {
     display: none;
 }
 

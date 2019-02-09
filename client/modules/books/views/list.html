@@ -1,4 +1,4 @@
-<div class="hide modal-body" ng-class="{'rb-untihide': authService.authorized === true}">
+<div class="rb-hide modal-body" ng-class="{'rb-untihide': authService.authorized === true}">
     <div class="rb-display-expanded-table form-group">
         <ol class="breadcrumb">
             <li>
@@ -12,46 +12,54 @@
     <div ng-show="items.length > 0">
         <table class="table table-striped rb-table-phone">
             <thead>
-            <th class="rb-column-name">
+            <th class="rb-column-name max-phone-hide-force">
                 Id
             </th>
-            <th class="rb-column-name">
+            <th class="rb-column-name max-phone-hide-force">
                 Cover
             </th>
-            <th class="rb-column-name">
+            <th class="rb-column-name max-phone-hide-force">
                 Name
             </th>
-            <th class="rb-column-name">
+            <th class="rb-column-name max-phone-hide-force">
                 ISBN
             </th>
-            <th class="rb-column-name">
+            <th class="rb-column-name max-phone-hide-force">
                 Year
             </th>
-            <th class="rb-column-name">
+            <th class="rb-column-name max-phone-hide-force">
                 Created date
             </th>
-            <th class="rb-column-huge-text">
+            <th class="rb-column-huge-text max-phone-hide-force">
                 Description
             </th>
-            <th class="rb-column-id">Actions</th>
+            <th class="rb-column-id max-phone-hide-force">Actions</th>
             </thead>
             <tbody>
                 <tr ng-repeat="book in items track by $index">
+                    <th class="rb-hide rb-max-phone-display-expanded-table">Id</th>
                     <td class="rb-column-id">{{book.id}}</td>
+                    <th class="rb-hide rb-max-phone-display-expanded-table">Cover</th>
                     <td class="rb-column-name">
-            <ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>
-            </td>
-            <td class="rb-column-name">{{book.name}}</td>
-            <td class="rb-column-name">{{book.isbn}}</td>
-            <td class="rb-column-name">{{book.year}}</td>
-            <td class="rb-column-huge-text">{{book.description}}</td>
-            <td class="rb-column-huge-text">{{book.created}}</td>
-            <td class="rb-column-id">
-                <a ng-href="/#/books/detail/{{book.id}}" class="btn btn-info btn-block-icon" title="View book">
-                    <i class="glyphicon glyphicon-list-alt"></i>     
-                </a>
-            </td>
-            </tr>
+                        <ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>
+                    </td>
+                    <th class="rb-hide rb-max-phone-display-expanded-table">Name</th>
+                    <td class="rb-column-name">{{book.name}}</td>
+                    <th class="rb-hide rb-max-phone-display-expanded-table">ISBN</th>
+                    <td class="rb-column-name">{{book.isbn}}</td>
+                    <th class="rb-hide rb-max-phone-display-expanded-table">Year</th>
+                    <td class="rb-column-name">{{book.year}}</td>
+                    <th class="rb-hide rb-max-phone-display-expanded-table">Created date</th>
+                    <td class="rb-column-huge-text">{{book.created}}</td>
+                    <th class="rb-hide rb-max-phone-display-expanded-table">Description</th>
+                    <td class="rb-column-huge-text">{{book.description}}</td>
+                    <th class="rb-hide rb-max-phone-display-expanded-table">Actions</th>
+                    <td class="rb-column-id">
+                        <a ng-href="/#/books/detail/{{book.id}}" class="btn btn-info btn-block-icon" title="View book">
+                            <i class="glyphicon glyphicon-list-alt"></i>     
+                        </a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
