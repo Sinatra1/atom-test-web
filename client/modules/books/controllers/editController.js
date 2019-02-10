@@ -33,7 +33,7 @@ atomTestApp.config([
             $location.path('/');
             return;
         }
-
+        
         var vm = this;
 
         $scope.bookService = bookService;
@@ -111,7 +111,7 @@ atomTestApp.config([
         };
 
         $scope.__afterInit = function () {
-            if ($scope.authService.currentUser.id != $scope.currentItem.created_user_id) {
+            if ($routeParams.id != null && $scope.authService.currentUser.id != $scope.currentItem.created_user_id) {
                 $location.path('/' + bookService.urlHash);
                 return;
             }

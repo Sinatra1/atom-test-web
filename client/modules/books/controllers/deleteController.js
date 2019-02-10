@@ -8,7 +8,7 @@ atomTestApp.controller('deleteBookController', [
         $scope.currentItemTitle = 'Delete book';
 
         $scope.__deleteItemQuery = function (item) {
-            return bookService.delete(item);
+            return bookService.delete(item.id);
         };
 
         $scope.getCurrentItemName = function () {

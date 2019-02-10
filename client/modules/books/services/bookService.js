@@ -46,8 +46,12 @@ atomTestApp.service("bookService", [
             return $api.post(request, new Book(data));
         };
 
-        service.delete = function (book) {
-            return $api.delete(service.urlHash + '/' + book.id);
+        service.delete = function (bookId) {
+            if (!bookId) {
+                return;
+            }
+            
+            return $api.delete(service.urlHash + '/' + bookId);
         };
 
         service.isValidYear = function (year) {

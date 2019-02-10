@@ -1,13 +1,25 @@
 'use strict';
 atomTestApp.controller('menuController', [
-    'authService', 'loginService', 'bookService', 'menuService',
-    function (authService, loginService, bookService, menuService) {
+    'authService',
+    'loginService',
+    'menuService',
+    'bookService',
+    'myBookService',
+    function (
+            authService,
+            loginService,
+            menuService,
+            bookService,
+            myBookService
+            ) {
+
         var vm = this;
-        
-        vm.loginService = loginService;
+
         vm.authService = authService;
+        vm.loginService = loginService;
         vm.menuService = menuService;
         vm.bookService = bookService;
+        vm.myBookService = myBookService;
         
         vm.selectMenuItem = function (urlHash) {
             vm.menuService.currentUrlHash = urlHash;
@@ -19,9 +31,9 @@ atomTestApp.controller('menuController', [
 
         vm.init = function () {
             if (!vm.menuService.currentUrlHash) {
-                vm.menuService.currentUrlHash = vm.catalogueService.urlHash;
+                vm.menuService.currentUrlHash = vm.bookService.urlHash;
             }
         };
+
+        vm.init();
     }]);
-
-

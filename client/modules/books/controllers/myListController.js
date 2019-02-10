@@ -1,17 +1,17 @@
 'use strict';
 atomTestApp.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
-                .when('/books', {
-                    controller: 'listBooksController',
-                    controllerAs: 'booksVm',
+                .when('/my-books', {
+                    controller: 'listMyBooksController',
+                    controllerAs: 'myBooksVm',
                     templateUrl: 'modules/books/views/list.html'
                 })
                 .otherwise({
                     redirectTo: '/'
                 });
-    }]).controller('listBooksController', [
-    '$scope', '$controller', '$location', 'bookService', 'imageService',
-    function ($scope, $controller, $location, bookService, imageService) {
+    }]).controller('listMyBooksController', [
+    '$scope', '$controller', '$location', 'myBookService', 'imageService',
+    function ($scope, $controller, $location, myBookService, imageService) {
 
         angular.extend(this, $controller('listItemsController', {$scope: $scope}));
         
@@ -20,15 +20,15 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
             return;
         }
 
-        $scope.bookService = bookService;
+        $scope.myBookService = myBookService;
         $scope.imageService = imageService;
         
         $scope.__getTitleList = function () {
-            return bookService.titleList;
+            return myBookService.titleList;
         };
 
         $scope.__getItemsQuery = function (params) {
-            return bookService.getList(angular.copy(params));
+            return myBookService.getList(angular.copy(params));
         };
         
         $scope.init();

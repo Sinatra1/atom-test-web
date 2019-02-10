@@ -7,14 +7,15 @@ atomTestApp.controller('listItemsController', [
         $scope.defaultLimit = 20;
         $scope.defaultOffset = 0;
         $scope.searchForm = {
-            offset: $scope.defaultOffset, 
-            limit: $scope.defaultLimit, 
-            order_by: 'created', 
+            offset: $scope.defaultOffset,
+            limit: $scope.defaultLimit,
+            order_by: 'created',
             order_mode: 'desc'
         };
         $scope.countItemsTotal = 0;
         $scope.items = [];
         $scope.authService = authService;
+        $scope.titleList = null;
 
         $scope.__getItemsQuery = function (params) {
             return null; //userService.getList(params);
@@ -28,8 +29,14 @@ atomTestApp.controller('listItemsController', [
 
         };
 
+        $scope.__getTitleList = function () {
+
+        };
+
         $scope.init = function () {
             $scope.__beforeInit();
+
+            $scope.titleList = $scope.__getTitleList();
 
             $scope.searchItems();
         };
@@ -53,12 +60,18 @@ atomTestApp.controller('listItemsController', [
                     }, function (response) {
                 $scope.searchForm.offset -= $scope.defaultOffset;
             });
-            
+
             $scope.getCountItemsTotal($scope.searchForm);
         };
 
         $scope.getItems = function (params) {
-            $scope.__getItemsQuery(params).then(
+            var request = $scope.__getItemsQuery(params);
+
+            if (!request) {
+                return;
+            }
+
+            request.then(
                     function (response) {
                         $scope.items = $scope.__prepareItems(response.data);
 
@@ -70,7 +83,13 @@ atomTestApp.controller('listItemsController', [
             var countParams = angular.copy(params);
             countParams.count = true;
 
-            $scope.__getItemsQuery(countParams).then(
+            var request = $scope.__getItemsQuery(countParams);
+
+            if (!request) {
+                return;
+            }
+
+            request.then(
                     function (response) {
                         $scope.countItemsTotal = parseInt(response.data);
                     }, function (response) {
