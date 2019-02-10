@@ -1,5 +1,6 @@
 'use strict';
-atomTestApp.controller('listItemsController', ['$scope', 'authService',
+atomTestApp.controller('listItemsController', [
+    '$scope', 'authService',
     function ($scope, authService) {
 
         $scope.currentItem = {id: ""};

@@ -7,6 +7,7 @@ atomTestApp.factory('Book', ['BaseModel', function (BaseModel) {
 
         Book.prototype = Object.create(BaseModel.prototype);
         
+        Book.prototype.created_user_id = null;
         Book.prototype.name = null;
         Book.prototype.isbn = null;
         Book.prototype.year = null;

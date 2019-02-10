@@ -28,11 +28,16 @@ atomTestApp.config([
     function ($scope, $controller, $routeParams, $location, bookService) {
 
         angular.extend(this, $controller('editItemController', {$scope: $scope}));
+        
+        if (!$scope.authService.isAuth()) {
+            $location.path('/');
+            return;
+        }
 
         var vm = this;
 
         $scope.bookService = bookService;
-
+        
         $scope.__deleteTemplateUrl = 'modules/common/views/deleteModal.html';
         $scope.__deleteControllerName = 'deleteBookController';
 
@@ -83,7 +88,7 @@ atomTestApp.config([
             }
 
             for (var i = 0; i < keys.length; i++) {
-                if (notAllowedFields.indexOf(keys[i]) !== -1 || $scope.currentItem[keys[i]] === null) {
+                if (notAllowedFields.indexOf(keys[i]) !== -1 || $scope.currentItem[keys[i]] === null || $scope.currentItem[keys[i]] === undefined) {
                     continue;
                 }
 
@@ -106,6 +111,11 @@ atomTestApp.config([
         };
 
         $scope.__afterInit = function () {
+            if ($scope.authService.currentUser.id != $scope.currentItem.created_user_id) {
+                $location.path('/' + bookService.urlHash);
+                return;
+            }
+            
             if (!$scope.currentItem || !$scope.currentItem.cover_image) {
                 return;
             }

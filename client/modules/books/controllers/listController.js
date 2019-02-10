@@ -10,10 +10,15 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
                     redirectTo: '/'
                 });
     }]).controller('listBooksController', [
-    '$scope', '$controller', 'bookService', 'imageService',
-    function ($scope, $controller, bookService, imageService) {
+    '$scope', '$controller', '$location', 'bookService', 'imageService',
+    function ($scope, $controller, $location, bookService, imageService) {
 
         angular.extend(this, $controller('listItemsController', {$scope: $scope}));
+        
+        if (!$scope.authService.isAuth()) {
+            $location.path('/');
+            return;
+        }
 
         $scope.bookService = bookService;
         $scope.imageService = imageService;

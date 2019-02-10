@@ -22,7 +22,7 @@
         <label>Description</label>
         <div>{{currentItem.description}}</div>
     </div>
-    <div class="btn-group">
+    <div ng-if="authService.currentUser.id == currentItem.created_user_id" class="btn-group">
         <a ng-href="/#/{{bookService.urlHash}}/edit/{{currentItem.id}}" class="btn btn-primary btn-block btn-block-small">Edit</a>
     </div>
 </div>

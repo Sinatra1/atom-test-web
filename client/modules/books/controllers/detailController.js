@@ -12,10 +12,15 @@ atomTestApp.config([
                     redirectTo: '/'
                 });
     }]).controller('detailBookController', [
-    '$scope', '$controller', '$routeParams', 'bookService',
-    function ($scope, $controller, $routeParams, bookService) {
+    '$scope', '$controller', '$routeParams', '$location', 'bookService',
+    function ($scope, $controller, $routeParams, $location, bookService) {
 
         angular.extend(this, $controller('editItemController', {$scope: $scope}));
+        
+        if (!$scope.authService.isAuth()) {
+            $location.path('/');
+            return;
+        }
 
         $scope.bookService = bookService;
 

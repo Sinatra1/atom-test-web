@@ -1,13 +1,14 @@
 'use strict';
 atomTestApp.controller('editItemController', [
-    '$scope', '$timeout', '$uibModal', 'imageService',
-    function ($scope, $timeout, $uibModal, imageService) {
+    '$scope', '$timeout', '$uibModal', '$location', 'imageService', 'authService',
+    function ($scope, $timeout, $uibModal, $location, imageService, authService) {
         var vm = this;
 
         $scope.currentItem = {id: ""};
         $scope.currentItemTitle = null;
         $scope.isSingleImageMode = true;
         $scope.imageService = imageService;
+        $scope.authService = authService;
         
         $scope.__deleteTemplateUrl = null; //'modules/users/views/deleteModal.html';
         $scope.__deleteControllerName = null; // 'deleteUserController';
