@@ -10,7 +10,7 @@ atomTestApp.controller('listItemsController', [
             offset: $scope.defaultOffset,
             limit: $scope.defaultLimit,
             order_by: 'created',
-            order_mode: 'desc'
+            order_mode: 'asc'
         };
         $scope.countItemsTotal = 0;
         $scope.items = [];
