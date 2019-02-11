@@ -1,36 +1,10 @@
-.modal {
-    display: block; 
 
-    .dropdown-menu {
-        position: relative;
-    }
-
-    .close {
-        color: $brand-primary;
-    }
-}
 
 .my-delete-close {
     color: $red-color;
 
     &:hover, &:focus {
         color: $red-color;
-    }
-}
-
-.modal-dialog {
-    display: table;
-
-    @media screen and (max-width: $screen-tablet) {
-        width: 95%;
-    }
-}
-
-.my-modal-content-huge {
-    width: 1200px;
-
-    @media screen and (max-width: $screen-tablet) {
-        width: 100%;
     }
 }
 
@@ -44,16 +18,6 @@
     padding: 15px 0 0 0 !important;
 }
 
-.my-table-striped {
-    &.table > thead > tr > th, 
-    &.table > thead > tr > td, 
-    &.table > tbody > tr > th, 
-    &.table > tbody > tr > td, 
-    &.table > tfoot > tr > th, 
-    &.table > tfoot > tr > td {
-        border-top: 0;
-    }
-}
 
 @media screen and (max-width: $screen-phone) {
     .my-table-phone {
@@ -107,10 +71,6 @@
     .navbar-right {
         margin-right: 0;
     }
-}
-
-.my-backgroud-gray-light {
-    background-color: $gray-light;
 }
 
 @mixin my-inline-block {
@@ -225,7 +185,7 @@ a.close:focus {
     }
 }
 
-a, .my-pointer {
+a {
     cursor: pointer;
 }
 

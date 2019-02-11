@@ -66,30 +66,3 @@
         padding-top: auto;
     }
 }
-
-.my-sort-column {
-    &.my-active {
-        .glyphicon-chevron-down:before, .glyphicon-chevron-up:before {
-            color: $red-color;
-        }
-    }
-
-    .glyphicon-chevron-down, .glyphicon-chevron-up {
-        margin-left: 10px;
-    }
-}
-
-.my-sort-column {
-    cursor: pointer;
-}
-
-.my-duration {
-    .my-duration-label {
-        padding-top: $my-padding-label;
-        padding-right: $my-padding-medium;
-    }
-
-    .my-duration-input {
-        padding-right: $my-padding-medium;
-    }
-}
