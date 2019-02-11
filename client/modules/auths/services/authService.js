@@ -1,17 +1,13 @@
 'use strict';
 atomTestApp.service('authService', [
-    '$rootScope', '$location', '$cookies', 'ROUTES', 'SETTINGS',
-    function ($rootScope, $location, $cookies, ROUTES, SETTINGS) {
+    '$rootScope', '$cookies', 'ROUTES', 'SETTINGS',
+    function ($rootScope, $cookies, ROUTES, SETTINGS) {
         var service = this;
 
         var defaultUser = {token: null, id: null};
         service.currentUser = angular.copy(defaultUser);
         service.authorized = null;
-        service.autoLogoutCountdown = null;
-        service.timer = null;
-        service.defaultError = 'Ошибка авторизации';
         service.CURRENT_USER_KEY_NAME = 'fields';
-        service.TOKEN_EXPIRES_DELAY_SEC = 30 * 1000 * 60;
 
         service.setAuthorizedState = function (token, userId) {
             if (!token || !userId) {
@@ -23,10 +19,6 @@ atomTestApp.service('authService', [
             if (service.authorized !== true) {
                 $rootScope.$emit('Authorized');
             }
-
-            if ($location.path() === ROUTES.PRELOGIN) {
-                $location.path(ROUTES.MAIN);
-            }
         };
 
         service.setCurrentUser = function (token, userId) {
@@ -36,7 +28,7 @@ atomTestApp.service('authService', [
             service.authorized = true;
 
             var expireDate = new Date();
-            expireDate.setTime(expireDate.getTime() + service.TOKEN_EXPIRES_DELAY_SEC);
+            expireDate.setTime(expireDate.getTime() + SETTINGS.TOKEN_EXPIRES_DELAY_SEC);
             
             $cookies.putObject(service.CURRENT_USER_KEY_NAME, service.currentUser, {expires: expireDate});
         };
@@ -74,10 +66,6 @@ atomTestApp.service('authService', [
             $rootScope.$emit('Unauthorized');
             
             top.location.href = ROUTES.PRELOGIN;
-        };
-
-        service.resetAutoLogoutCountdown = function () {
-            service.autoLogoutCountdown = SETTINGS.AUTO_LOGOUT_TIMEOUT;
         };
 
         service.isAuth = function () {

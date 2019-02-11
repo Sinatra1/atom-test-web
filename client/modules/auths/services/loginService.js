@@ -74,24 +74,6 @@ atomTestApp.service("loginService", [
             return true;
         };
 
-        service.prepareOptions = function (user) {
-            if (!user.options) {
-                user.options = [''];
-            } else {
-                user.options = JSON.parse(user.options);
-            }
-
-            return user;
-        };
-
-        service.getStatus = function () {
-            return $api.get('status');
-        };
-
-        service.ping = function () {
-            return $api.get('auths');
-        };
-
         return service;
     }]);
 

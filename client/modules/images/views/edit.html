@@ -1,11 +1,11 @@
-<div class="form-group rb-images">
-    <div class="rb-image-item rb-image-edit" ng-repeat="imageId in currentItem.imagesId track by $index">
+<div class="form-group my-images">
+    <div class="my-image-item my-image-edit" ng-repeat="imageId in currentItem.imagesId track by $index">
         <img style="background-image: url('{{imageService.getImageUrlById(imageId)}}')"/>
-        <a ng-click="deleteImage($index)" title="Delete image" class="close rb-delete-close">&times;</a>
+        <a ng-click="deleteImage($index)" title="Delete image" class="close my-delete-close">&times;</a>
     </div>
-    <div class="rb-image-item rb-image-edit" ng-repeat="newImage in currentItem.newImages track by $index">
+    <div class="my-image-item my-image-edit" ng-repeat="newImage in currentItem.newImages track by $index">
         <img style="background-image: url('{{newImage}}')"/>
-        <a ng-click="deleteNewImage($index)" title="Delete image" class="close rb-delete-close">&times;</a>
+        <a ng-click="deleteNewImage($index)" title="Delete image" class="close my-delete-close">&times;</a>
     </div>
 </div>
 <div ng-show="selectImageError" class="alert alert-danger alert-error form-group">

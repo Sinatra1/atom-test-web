@@ -1,12 +1,12 @@
 table {
-    .rb-images {
-        .rb-image-item {
+    .my-images {
+        .my-image-item {
             img {
-                height: $rb-lg-image-height;
-                width: $rb-lg-image-width;
+                height: $my-lg-image-height;
+                width: $my-lg-image-width;
 
                 @media screen and (max-width: $screen-phone) {
-                    height: $rb-xxxhdpi-image-height;
+                    height: $my-xxxhdpi-image-height;
                     width: 100%;
                 }
             }

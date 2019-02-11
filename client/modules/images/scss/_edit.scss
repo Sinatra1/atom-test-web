@@ -1,32 +1,32 @@
-.rb-images {
-    @include rb-display-expanded-table;
-    malign-bottom: $rb-padding-medium;
-    margin-left: -$rb-padding-small;
+.my-images {
+    @include my-display-expanded-table;
+    malign-bottom: $my-padding-medium;
+    margin-left: -$my-padding-small;
 
-    .rb-image-item {
-        @include rb-inline-block;
+    .my-image-item {
+        @include my-inline-block;
         width: 100%;
 
-        &.rb-image-edit {
+        &.my-image-edit {
             width: auto;
 
             img {
                 @media screen and (max-width: $screen-phone) {
-                    height: $rb-xxxhdpi-image-height;
-                    width: $rb-xxxhdpi-image-width;
+                    height: $my-xxxhdpi-image-height;
+                    width: $my-xxxhdpi-image-width;
                 }
             }
         }
 
         img {
-            height: $rb-xxxhdpi-image-height;
-            width: $rb-xxxhdpi-image-width;
-            margin: $rb-padding-small;
+            height: $my-xxxhdpi-image-height;
+            width: $my-xxxhdpi-image-width;
+            margin: $my-padding-small;
             background-position: top;
             background-size: cover;
 
             @media screen and (max-width: $screen-phone) {
-                height: $rb-xxxhdpi-image-height;
+                height: $my-xxxhdpi-image-height;
                 width: 100%;
             }
         }

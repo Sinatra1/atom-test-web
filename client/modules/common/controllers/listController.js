@@ -25,17 +25,11 @@ atomTestApp.controller('listItemsController', [
             return items;
         };
 
-        $scope.__beforeInit = function () {
-
-        };
-
         $scope.__getTitleList = function () {
 
         };
 
         $scope.init = function () {
-            $scope.__beforeInit();
-
             $scope.titleList = $scope.__getTitleList();
 
             $scope.searchItems();

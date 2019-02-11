@@ -1,54 +1,54 @@
-.rb-create-button {
+.my-create-button {
     @media (min-width: $screen-tablet) {
         margin-left: 50px;
         margin-bottom: 50px;
     }
 }
 
-@mixin rb-column-phone {
+@mixin my-column-phone {
     @media (max-width: $screen-phone) {
         width: 100%;
         max-width: 100%;
     }
 }
 
-.rb-column-id {
+.my-column-id {
     width: 80px;
 
-    @include rb-column-phone;
+    @include my-column-phone;
 }
 
-.rb-column-actions {
+.my-column-actions {
     width: 150px;
 
-    @include rb-column-phone;
+    @include my-column-phone;
 }
 
-.rb-column-name {
+.my-column-name {
     max-width: 150px;
     word-wrap: break-word;
 
-    @include rb-column-phone;
+    @include my-column-phone;
 }
 
-.rb-column-text {
+.my-column-text {
     max-width: 200px;
     word-wrap: break-word;
 
-    @include rb-column-phone;
+    @include my-column-phone;
 }
 
-.rb-column-huge-text {
+.my-column-huge-text {
     max-width: 300px;
     word-wrap: break-word;
 
-    @include rb-column-phone;
+    @include my-column-phone;
 }
 
-.rb-column-btn {
+.my-column-btn {
     width: 50px;
 
-    @include rb-column-phone;
+    @include my-column-phone;
 }
 
 .btn-block {
@@ -67,8 +67,8 @@
     }
 }
 
-.rb-sort-column {
-    &.rb-active {
+.my-sort-column {
+    &.my-active {
         .glyphicon-chevron-down:before, .glyphicon-chevron-up:before {
             color: $red-color;
         }
@@ -79,17 +79,17 @@
     }
 }
 
-.rb-sort-column {
+.my-sort-column {
     cursor: pointer;
 }
 
-.rb-duration {
-    .rb-duration-label {
-        padding-top: $rb-padding-label;
-        padding-right: $rb-padding-medium;
+.my-duration {
+    .my-duration-label {
+        padding-top: $my-padding-label;
+        padding-right: $my-padding-medium;
     }
 
-    .rb-duration-input {
-        padding-right: $rb-padding-medium;
+    .my-duration-input {
+        padding-right: $my-padding-medium;
     }
 }

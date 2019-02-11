@@ -33,20 +33,12 @@ atomTestApp.controller('editItemController', [
             return null;//example userService.getById(id);
         };
 
-        $scope.__beforeClose = function (item) {
-            return item;
-        };
-
         $scope.__close = function (item) {
             return item;
         };
         
         $scope.__onError = function (error) {
             return error;
-        };
-
-        $scope.__cancel = function () {
-
         };
         
         $scope.__transmitDataToDeleteController = function () {
@@ -120,7 +112,6 @@ atomTestApp.controller('editItemController', [
         $scope.updateItemSuccess = function (item) {
             $scope.showSpinner = false;
             $scope.setEditErrorMessage = false;
-            item = $scope.__beforeClose(item);
             $scope.__close(item);
         };
 
@@ -158,15 +149,6 @@ atomTestApp.controller('editItemController', [
             }
 
             $scope.currentItem[fieldName] = event.target.selectedOptions[0].value.trim();
-        };
-
-        $scope.cancel = function () {
-            $scope.__beforeClose();
-            $scope.__cancel();
-        };
-
-        $scope.__afterCreateImages = function (item) {
-
         };
 
         $scope.addImage = function () {
