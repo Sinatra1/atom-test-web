@@ -1,17 +1,26 @@
 'use strict';
 atomTestApp.service("userService", [
-    'authService', '$api', '$q', 'emailService', 'User',
-    function (authService, $api, $q, emailService, User) {
+    'authService', '$api', '$q', 'ROUTES', 'emailService', 'User',
+    function (authService, $api, $q, ROUTES, emailService, User) {
         var service = {};
 
         service.urlHash = 'users';
-        service.title = 'User';
+        service.titleList = 'My profile';
+        service.regTitle = 'Sign up';
 
         service.anUpperCase = /[A-Z]/;
         service.aLowerCase = /[a-z]/;
         service.aNumber = /[0-9]/;
         service.aSpecial = /[!|@|#|$|%|^|&|*|(|)|-|_]/;
         service.minLength = 8;
+        
+        service.getUrl = function () {
+            return ROUTES.HASH_KEY + service.urlHash;
+        };
+        
+        service.getProfile = function () {
+            return $api.get(service.urlHash);
+        };
 
         service.create = function (data) {
             var user = new User(data);
@@ -38,6 +47,14 @@ atomTestApp.service("userService", [
             );
 
             return deferred.promise;
+        };
+        
+        service.update = function (user) {
+            if (!user || !user.id) {
+                return;
+            }
+
+            return $api.put(service.urlHash, new User(user));
         };
 
         service.isValid = function (user) {

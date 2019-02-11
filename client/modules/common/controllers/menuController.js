@@ -5,12 +5,14 @@ atomTestApp.controller('menuController', [
     'menuService',
     'bookService',
     'myBookService',
+    'userService',
     function (
             authService,
             loginService,
             menuService,
             bookService,
-            myBookService
+            myBookService,
+            userService
             ) {
 
         var vm = this;
@@ -20,6 +22,7 @@ atomTestApp.controller('menuController', [
         vm.menuService = menuService;
         vm.bookService = bookService;
         vm.myBookService = myBookService;
+        vm.userService = userService;
         
         vm.selectMenuItem = function (urlHash) {
             vm.menuService.currentUrlHash = urlHash;

@@ -24,6 +24,9 @@
                         <li role="menuitem" ng-click="menuVm.selectMenuItem(menuVm.myBookService.urlHash)" ng-class="{'active' : menuVm.isActiveMenuItem(menuVm.myBookService.urlHash)}">
                             <a href="{{menuVm.myBookService.getUrl()}}">{{menuVm.myBookService.titleList}}</a>
                         </li>
+                        <li role="menuitem" ng-click="menuVm.selectMenuItem(menuVm.userService.urlHash)" ng-class="{'active' : menuVm.isActiveMenuItem(menuVm.userService.urlHash)}">
+                            <a href="{{menuVm.userService.getUrl()}}">{{menuVm.userService.titleList}}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="menu__title-block">

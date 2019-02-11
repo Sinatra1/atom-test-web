@@ -8,15 +8,15 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
                 .otherwise({
                     redirectTo: '/'
                 });
-    }]).controller('loginController', ['$scope', 'loginService', '$location', 'authService', 'regService', 'bookService',
-    function ($scope, loginService, $location, authService, regService, bookService) {
+    }]).controller('loginController', ['$scope', 'loginService', '$location', 'authService', 'userService', 'bookService',
+    function ($scope, loginService, $location, authService, userService, bookService) {
 
         if (authService.isAuth()) {
             $location.path('/' + bookService.urlHash);
         }
 
         $scope.loginService = loginService;
-        $scope.regService = regService;
+        $scope.userService = userService;
         $scope.isInProccess = false;
 
         $scope.loginUser = function (user) {

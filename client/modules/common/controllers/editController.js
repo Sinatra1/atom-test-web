@@ -1,7 +1,7 @@
 'use strict';
 atomTestApp.controller('editItemController', [
-    '$scope', '$timeout', '$uibModal', '$location', 'imageService', 'authService',
-    function ($scope, $timeout, $uibModal, $location, imageService, authService) {
+    '$scope', '$timeout', '$uibModal', 'imageService', 'authService',
+    function ($scope, $timeout, $uibModal, imageService, authService) {
         var vm = this;
 
         $scope.currentItem = {id: ""};

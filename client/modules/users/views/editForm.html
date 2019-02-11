@@ -1,0 +1,78 @@
+<form role="form" name="editForm" ng-submit="updateItem();">
+    <div class="form-group" ng-class="{error: editForm.first_name.$invalid}">
+        <label>First name</label>
+        <div>
+            <input name="first_name" ng-model="currentItem.first_name" type="text" ng-keyup="firstNameError = editForm.first_name.$dirty && !currentItem.first_name" ng-blur="showFirstNameError = firstNameError" class="form-control" placeholder="First name" required/>
+            <div ng-show="showFirstNameError" class="alert alert-danger alert-error">
+                First name is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{error: editForm.last_name.$invalid}">
+        <label>Last name</label>
+        <div>
+            <input name="last_name" ng-model="currentItem.last_name" type="text" ng-keyup="lastNameError = editForm.last_name.$dirty && !currentItem.last_name" ng-blur="showLastNameError = lastNameError" class="form-control" placeholder="Last name" required/>
+            <div ng-show="showLastNameError" class="alert alert-danger alert-error">
+                Last name is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{error: editForm.username.$invalid}">
+        <label>User name</label>
+        <div>
+            <input name="username" ng-model="currentItem.username" type="text" ng-keyup="usernameError = editForm.username.$dirty && !currentItem.username" ng-blur="showUserNameError = usernameError" class="form-control" placeholder="User name" required/>
+            <div ng-show="showUserNameError" class="alert alert-danger alert-error">
+                User name is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{error: editForm.email.$invalid}">
+        <label>Email name</label>
+        <div>
+            <input name="email" ng-model="currentItem.email" type="email" ng-keyup="emailError = editForm.email.$dirty && editForm.email && !userService.checkEmail(currentItem.email)" ng-blur="showEmailError = emailError" class="form-control" placeholder="Email" required/>
+            <div ng-show="showEmailError" class="alert alert-danger alert-error">
+                Email is not valid
+            </div>
+            <div ng-show="editForm.email.$dirty && editForm.email.$invalid && !showEmailError" class="alert alert-danger alert-error">
+                Email is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{error: editForm.password.$invalid}">
+        <label>Password</label>
+        <div>
+            <input name="password" ng-model="currentItem.password" type="password" ng-keyup="validatePassword(editForm)" ng-blur="showPasswordError = passwordError;showPasswordTwiceError = passwordTwiceError" class="form-control" placeholder="Password" required/>
+            <small>8 characters, symbols, numbers, special characters</small>
+            <div ng-show="showPasswordError" class="alert alert-danger alert-error">
+                Specify a more complex password
+            </div>
+            <div ng-show="editForm.password.$dirty && editForm.password.$invalid && !showPasswordError" class="alert alert-danger alert-error">
+                Password is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{error: editForm.password.$invalid}">
+        <label>Password twice</label>
+        <div>
+            <input name="passwordTwice" ng-model="currentItem.passwordTwice" type="password" ng-keyup="validatePasswordTwice(editForm)" ng-blur="showPasswordTwiceError = passwordTwiceError" class="form-control" placeholder="Password twice" required/>
+            <div ng-show="showPasswordTwiceError" class="alert alert-danger alert-error">
+                Passwords do not match
+            </div>
+        </div>
+    </div>
+    <div ng-show="setEditErrorMessage && isValidForm(editForm)" class="alert alert-danger alert-error">
+        User with this user name or email already exists
+    </div>
+    <div>
+        <div class="btn-group form-group">
+            <button ng-disabled="!isValidForm(editForm) || showSpinner"
+                    type="submit" class="btn btn-primary btn-block btn-block-small">
+                <span ng-show="showSpinner"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+                {{buttonTitle}}
+            </button>
+        </div>
+        <div ng-if="isRegMode" class="btn-group form-group">
+            <a class="btn btn-default btn-block btn-block-small" href="/#/">{{loginService.title}}</a>
+        </div>
+    </div>
+</form>
