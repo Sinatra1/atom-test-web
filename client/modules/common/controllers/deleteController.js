@@ -4,8 +4,7 @@ atomTestApp.controller('deleteItemController', ['$scope', '$uibModalInstance', '
 
         var vm = this;
 
-        $scope.currentItemTitle = ''; //Удалить клиента
-        $scope.currentItemTitleGenitive = ''; //удаления клиента
+        $scope.currentItemTitle = ''; //Delete user
         $scope.deleteButtonTitle = 'Delete';
         $scope.cancelButtonTitle = 'Cancel';
 
