@@ -52,7 +52,6 @@ var paths = {
     appJS: [
         'client/assets/js/app.js',
         'client/assets/js/routes.js',
-        'client/modules/common/utils/*.js',
         'client/modules/common/models/*.js',
         'client/modules/auths/services/*.js',
         'client/modules/books/models/*.js',

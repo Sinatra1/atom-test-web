@@ -20,7 +20,7 @@ atomTestApp.service("myBookService", [
                 return;
             }
 
-            return $api.post(service.urlHash + '/' + bookId);
+            return $api.put(service.urlHash + '/' + bookId);
         };
 
         service.remove = function (bookId) {

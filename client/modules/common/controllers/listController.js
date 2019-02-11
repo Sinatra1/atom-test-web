@@ -1,7 +1,7 @@
 'use strict';
 atomTestApp.controller('listItemsController', [
-    '$scope', 'authService',
-    function ($scope, authService) {
+    '$scope', 'authService', '$timeout',
+    function ($scope, authService, $timeout) {
 
         $scope.currentItem = {id: ""};
         $scope.defaultLimit = 20;
@@ -94,5 +94,15 @@ atomTestApp.controller('listItemsController', [
                         $scope.countItemsTotal = parseInt(response.data);
                     }, function (response) {
             });
+        };
+        
+        $scope.hideMessageWithDalay = function (key, delay) {
+            if (!delay) {
+                delay = 5000;
+            }
+            
+            $timeout(function () {
+                delete $scope[key];
+            }, delay);
         };
     }]);

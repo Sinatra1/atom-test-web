@@ -5,8 +5,14 @@
                 {{titleList}}
             </li>
         </ol>
-        <a ng-href="/#/books/edit" title="Create new book" class="btn btn-primary btn-block-icon pull-right">
-            <i class="glyphicon glyphicon-plus"></i>
+        <div class="alert alert-success col-md-5 col-sm-12 align-center text-center" ng-show="successMessage">
+            {{successMessage}}
+        </div>
+        <div class="alert alert-danger col-md-5 col-sm-12 align-center text-center" ng-show="errorMessage">
+            {{errorMessage}}
+        </div>
+        <a ng-href="/#/books/edit" title="Create new book" class="btn btn-primary btn-block btn-block-small pull-right">
+            Create new book
         </a>
     </div>
     <div ng-show="items.length > 0">
@@ -33,7 +39,7 @@
             <th class="rb-column-huge-text max-phone-hide-force">
                 Description
             </th>
-            <th class="rb-column-id max-phone-hide-force">Actions</th>
+            <th colspan="2" class="rb-column-id max-phone-hide-force">Actions</th>
             </thead>
             <tbody>
                 <tr ng-repeat="book in items track by $index">
@@ -53,10 +59,18 @@
                     <td class="rb-column-huge-text">{{book.created}}</td>
                     <th class="rb-hide rb-max-phone-display-expanded-table">Description</th>
                     <td class="rb-column-huge-text">{{book.description}}</td>
-                    <th class="rb-hide rb-max-phone-display-expanded-table">Actions</th>
-                    <td class="rb-column-id">
+                    <th colspan="2" class="rb-hide rb-max-phone-display-expanded-table">Actions</th>
+                    <td class="rb-column-btn">
                         <a ng-href="/#/books/detail/{{book.id}}" class="btn btn-info btn-block-icon" title="View book">
                             <i class="glyphicon glyphicon-list-alt"></i>     
+                        </a>
+                    </td>
+                    <td class="rb-column-btn">
+                        <a ng-if="!book.is_my_book && !isMyBooksMode" ng-click="addToMyBooks(book)" class="btn btn-primary btn-block-icon" title="Add to my books">
+                            <i class="glyphicon glyphicon-plus"></i>     
+                        </a>
+                        <a ng-if="book.is_my_book && isMyBooksMode" ng-click="removeFromMyBooks(book, $index)" class="btn btn-primary btn-block-icon" title="Remove from my books">
+                            <i class="glyphicon glyphicon-trash"></i>     
                         </a>
                     </td>
                 </tr>
