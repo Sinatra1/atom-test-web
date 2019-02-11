@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
         <label>Description</label>
-        <div>{{currentItem.description}}</div>
+        <div class="my-pre-text">{{currentItem.description}}</div>
     </div>
     <div ng-if="authService.currentUser.id == currentItem.created_user_id" class="btn-group">
         <a ng-href="/#/{{bookService.urlHash}}/edit/{{currentItem.id}}" class="btn btn-primary btn-block btn-block-small">Edit</a>

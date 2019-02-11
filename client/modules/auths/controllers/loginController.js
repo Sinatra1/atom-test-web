@@ -45,6 +45,14 @@ atomTestApp.config(['$routeProvider', function ($routeProvider) {
         $scope.isValidForm = function () {
             return (!$scope.authForm.$invalid && !$scope.usernameError && !$scope.passwordError);
         };
+        
+        $scope.validateUsername = function (authForm) {
+            $scope.usernameError = authForm.username.$dirty && authForm.username.$invalid;
+        };
+        
+        $scope.validatePassword = function (authForm) {
+            $scope.passwordError = authForm.password.$dirty && authForm.password.$invalid
+        };
     }]);
 
 

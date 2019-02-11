@@ -13,7 +13,7 @@ var router = require('front-router');
 var sequence = require('run-sequence');
 
 // Check for --production flag
-var isProduction = !argv.production;
+var isProduction = argv.production;
 
 // 2. FILE PATHS
 // - - - - - - - - - - - - - - -

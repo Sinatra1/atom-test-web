@@ -4,7 +4,7 @@ atomTestApp.controller('listItemsController', [
     function ($scope, authService, $timeout) {
 
         $scope.currentItem = {id: ""};
-        $scope.defaultLimit = 20;
+        $scope.defaultLimit = 10;
         $scope.defaultOffset = 0;
         $scope.searchForm = {
             offset: $scope.defaultOffset,

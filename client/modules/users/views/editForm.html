@@ -2,7 +2,14 @@
     <div class="form-group" ng-class="{error: editForm.first_name.$invalid}">
         <label>First name</label>
         <div>
-            <input name="first_name" ng-model="currentItem.first_name" type="text" ng-keyup="firstNameError = editForm.first_name.$dirty && !currentItem.first_name" ng-blur="showFirstNameError = firstNameError" class="form-control" placeholder="First name" required/>
+            <input name="first_name" 
+                   ng-model="currentItem.first_name" 
+                   type="text" 
+                   ng-keyup="firstNameError = editForm.first_name.$dirty && !currentItem.first_name" 
+                   ng-blur="showFirstNameError = firstNameError" 
+                   class="form-control" 
+                   placeholder="First name" 
+                   required/>
             <div ng-show="showFirstNameError" class="alert alert-danger alert-error">
                 First name is required
             </div>
@@ -11,7 +18,14 @@
     <div class="form-group" ng-class="{error: editForm.last_name.$invalid}">
         <label>Last name</label>
         <div>
-            <input name="last_name" ng-model="currentItem.last_name" type="text" ng-keyup="lastNameError = editForm.last_name.$dirty && !currentItem.last_name" ng-blur="showLastNameError = lastNameError" class="form-control" placeholder="Last name" required/>
+            <input name="last_name" 
+                   ng-model="currentItem.last_name" 
+                   type="text" 
+                   ng-keyup="lastNameError = editForm.last_name.$dirty && !currentItem.last_name" 
+                   ng-blur="showLastNameError = lastNameError" 
+                   class="form-control" 
+                   placeholder="Last name" 
+                   required/>
             <div ng-show="showLastNameError" class="alert alert-danger alert-error">
                 Last name is required
             </div>
@@ -20,7 +34,14 @@
     <div class="form-group" ng-class="{error: editForm.username.$invalid}">
         <label>User name</label>
         <div>
-            <input name="username" ng-model="currentItem.username" type="text" ng-keyup="usernameError = editForm.username.$dirty && !currentItem.username" ng-blur="showUserNameError = usernameError" class="form-control" placeholder="User name" required/>
+            <input name="username" 
+                   ng-model="currentItem.username" 
+                   type="text" 
+                   ng-keyup="usernameError = editForm.username.$dirty && !currentItem.username" 
+                   ng-blur="showUserNameError = usernameError" 
+                   class="form-control" 
+                   placeholder="User name" 
+                   required/>
             <div ng-show="showUserNameError" class="alert alert-danger alert-error">
                 User name is required
             </div>
@@ -29,7 +50,14 @@
     <div class="form-group" ng-class="{error: editForm.email.$invalid}">
         <label>Email name</label>
         <div>
-            <input name="email" ng-model="currentItem.email" type="email" ng-keyup="emailError = editForm.email.$dirty && editForm.email && !userService.checkEmail(currentItem.email)" ng-blur="showEmailError = emailError" class="form-control" placeholder="Email" required/>
+            <input name="email" 
+                   ng-model="currentItem.email" 
+                   type="email" 
+                   ng-keyup="emailError = editForm.email.$dirty && editForm.email && !userService.checkEmail(currentItem.email)" 
+                   ng-blur="showEmailError = emailError" 
+                   class="form-control" 
+                   placeholder="Email" 
+                   required/>
             <div ng-show="showEmailError" class="alert alert-danger alert-error">
                 Email is not valid
             </div>
@@ -41,7 +69,15 @@
     <div class="form-group" ng-class="{error: editForm.password.$invalid}">
         <label>Password</label>
         <div>
-            <input name="password" ng-model="currentItem.password" type="password" ng-keyup="validatePassword(editForm)" ng-blur="showPasswordError = passwordError;showPasswordTwiceError = passwordTwiceError" class="form-control" placeholder="Password" required/>
+            <input name="password" 
+                   ng-model="currentItem.password" 
+                   type="password" 
+                   ng-keyup="validatePassword(editForm)" 
+                   ng-blur="showPasswordError = passwordError;showPasswordTwiceError = passwordTwiceError" 
+                   class="form-control" 
+                   placeholder="Password" 
+                   autocomplete="off"
+                   required/>
             <small>8 characters, symbols, numbers, special characters</small>
             <div ng-show="showPasswordError" class="alert alert-danger alert-error">
                 Specify a more complex password
@@ -54,7 +90,15 @@
     <div class="form-group" ng-class="{error: editForm.password.$invalid}">
         <label>Password twice</label>
         <div>
-            <input name="passwordTwice" ng-model="currentItem.passwordTwice" type="password" ng-keyup="validatePasswordTwice(editForm)" ng-blur="showPasswordTwiceError = passwordTwiceError" class="form-control" placeholder="Password twice" required/>
+            <input name="passwordTwice" 
+                   ng-model="currentItem.passwordTwice" 
+                   type="password" 
+                   ng-keyup="validatePasswordTwice(editForm)" 
+                   ng-blur="showPasswordTwiceError = passwordTwiceError" 
+                   class="form-control" 
+                   placeholder="Password twice" 
+                   autocomplete="off"
+                   required/>
             <div ng-show="showPasswordTwiceError" class="alert alert-danger alert-error">
                 Passwords do not match
             </div>

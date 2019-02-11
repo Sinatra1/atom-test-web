@@ -12,7 +12,7 @@
 
 .my-delete-close {
     color: $red-color;
-    
+
     &:hover, &:focus {
         color: $red-color;
     }
@@ -298,8 +298,12 @@ input::-webkit-inner-spin-button {
 
 .breadcrumb > li{
     font-size: $font-size-h1;
-    
+
     @media (max-width: $screen-phone) {
         font-size: $font-size-h4;
     }
+}
+
+.my-pre-text {
+    white-space: pre-line;
 }
