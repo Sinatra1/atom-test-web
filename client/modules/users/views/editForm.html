@@ -118,5 +118,10 @@
         <div ng-if="isRegMode" class="btn-group form-group">
             <a class="btn btn-default btn-block btn-block-small" href="/#/">{{loginService.title}}</a>
         </div>
+        <div ng-if="!isRegMode" class="btn-group form-group">
+            <a ng-click="editUserVm.showDeleteModal(currentItem)" class="btn btn-default btn-block btn-block-small"> 
+                Delete
+            </a>
+        </div>
     </div>
 </form>

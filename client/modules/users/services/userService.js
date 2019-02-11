@@ -56,6 +56,10 @@ atomTestApp.service("userService", [
 
             return $api.put(service.urlHash, new User(user));
         };
+        
+        service.delete = function () {
+            return $api.delete(service.urlHash);
+        };
 
         service.isValid = function (user) {
             if (!user.first_name || !user.last_name || !user.username || !user.email || !emailService.validate(user.email)) {
@@ -90,6 +94,14 @@ atomTestApp.service("userService", [
 
         service.checkEmail = function (email) {
             return emailService.validate(email);
+        };
+        
+        service.formatName = function (user) {
+            if (!user || !user.id) {
+                return '';
+            }
+
+            return user.first_name + ' ' + user.last_name;
         };
 
         return service;
