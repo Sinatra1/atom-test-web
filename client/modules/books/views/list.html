@@ -47,7 +47,9 @@
                     <td class="my-column-id">{{$index+1}}</td>
                     <th class="my-hide my-max-phone-display-expanded-table">Cover</th>
                     <td class="my-column-name">
-                        <ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>
+                        <a ng-href="/#/books/detail/{{book.id}}">
+                            <ng-include src="'./modules/images/views/detail.html'" ng-repeat="currentItem in [book]"></ng-include>
+                        </a>
                     </td>
                     <th class="my-hide my-max-phone-display-expanded-table">Name</th>
                     <td class="my-column-name">{{book.name}}</td>
