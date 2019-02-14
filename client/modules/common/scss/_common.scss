@@ -120,6 +120,10 @@
     @include my-max-phone-display-expanded-table;
 }
 
+.my-max-phone-display-expanded-table {
+    @include my-max-phone-display-expanded-table;
+}
+
 @mixin my-display-block-force {
     display: block !important;
 }

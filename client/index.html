@@ -27,6 +27,9 @@
                         <li role="menuitem" ng-click="menuVm.selectMenuItem(menuVm.userService.urlHash)" ng-class="{'active' : menuVm.isActiveMenuItem(menuVm.userService.urlHash)}">
                             <a href="{{menuVm.userService.getUrl()}}">{{menuVm.userService.titleList}}</a>
                         </li>
+                        <li role="menuitem" class="min-sm-hide-force my-max-phone-display-expanded-table" ng-if="menuVm.authService.isAuth()">
+                            <a ng-click="menuVm.loginService.logoutUser()">Sign out</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="menu__title-block">
